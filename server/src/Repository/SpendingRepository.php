@@ -14,6 +14,15 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  */
 class SpendingRepository extends ServiceEntityRepository
 {
+    const TEMPORAL_FUNCTIONS = [
+        'Day' => 'CAST(s.date as DATE)',
+        'Week' => "DATE_FORMAT(s.date, 'week %u')",
+        'Month' => "DATE_FORMAT(s.date, '%Y-%m')",
+        'Quarter' => '',
+        'Semester' => '',
+        'Year' => 'YEAR(s.date)'
+    ];
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Spending::class);
@@ -21,46 +30,67 @@ class SpendingRepository extends ServiceEntityRepository
 
     function search(array $filters) : array
     {
-        $builder =  $this->createQueryBuilder('s');
+        $filterName = $filters['name'] ?? null;
+        $filterScale = $filters['timeScale'] ?? null;
+        $filterMaxPrice = $filters['maxPrice'] ?? null;
+        $filterMinPrice = $filters['minPrice'] ?? null;
+        $filterDateStart = $filters['dateStart'] ?? null;
+        $filterDateEnd = $filters['dateEnd'] ?? null;
 
-        if (is_string($filters['name'])) {
-            $name = $filters['name'];
+        $builder = $this->createQueryBuilder('s');
+
+        $filterScaleActicated = $filterScale && isset(static::TEMPORAL_FUNCTIONS[$filterScale]);
+
+        if ($filterScaleActicated) {
+            $builder = $builder->select("
+                SUM(s.price) as price,
+                " . static::TEMPORAL_FUNCTIONS[$filterScale] . " as date,
+                " . static::TEMPORAL_FUNCTIONS[$filterScale] . " as label
+            ")
+            ->groupBy('date')
+            ;
+        }
+
+        if (is_string($filterName)) {
             $builder = $builder
                 ->where('s.label LIKE :name')
-                ->setParameter('name', "%$name%");
+                ->setParameter('name', "%$filterName%");
         }
 
-        if (is_numeric($filters['maxPrice'])) {
-            $maxPrice = $filters['maxPrice'];
+        if (is_numeric($filterMaxPrice)) {
             $builder = $builder
                 ->andWhere('s.price <= :price')
-                ->setParameter('price', $maxPrice);
+                ->setParameter('price', $filterMaxPrice);
         }
 
-        if (is_numeric($filters['minPrice'])) {
-            $minPrice = $filters['minPrice'];
+        if (is_numeric($filterMinPrice)) {
             $builder = $builder
                 ->andWhere('s.price >= :price')
-                ->setParameter('price', $minPrice);
+                ->setParameter('price', $filterMinPrice);
         }
 
-        $dateEnd = is_string($filters['dateEnd'])
-            ? new \DateTime(date('d/m/Y H:i:s', strtotime($filters['dateEnd'])))
+        $dateEnd = !empty($filterDateEnd) && is_string($filterDateEnd)
+            ? new \DateTime(date('d/m/Y H:i:s', strtotime($filterDateEnd)))
             : new \DateTime('now');
         $dateEnd->setTime(23, 59, 59, 0);
 
-        $dateStart = is_string($filters['dateStart'])
-            ? new \DateTime(date('d/m/Y H:i:s', strtotime($filters['dateStart'])))
+        $dateStart = !empty($filterDateStart) && is_string($filterDateStart)
+            ? new \DateTime(date('d/m/Y H:i:s', strtotime($filterDateStart)))
             : $dateEnd->sub(new \DateInterval('P1M'));
         $dateStart->setTime(0, 0, 0, 0);
 
-        $builder = $builder
-            ->andWhere('s.date BETWEEN :dateStart and :dateEnd')
-            ->setParameter('dateStart', $dateStart, \Doctrine\DBAL\Types\Type::DATETIME)
-            ->setParameter('dateEnd', $dateEnd, \Doctrine\DBAL\Types\Type::DATETIME);
+//        $builder = $builder
+//            ->andWhere('s.date <> null AND s.date BETWEEN :dateStart and :dateEnd')
+//            ->setParameter('dateStart', $dateStart, \Doctrine\DBAL\Types\Type::DATETIME)
+//            ->setParameter('dateEnd', $dateEnd, \Doctrine\DBAL\Types\Type::DATETIME);
+
+        if ($filterScaleActicated) {
+            $builder->orderBy('date', 'DESC');
+        } else {
+            $builder->orderBy('s.date', 'DESC');
+        }
 
         return $builder
-            ->orderBy('s.id', 'DESC')
             ->getQuery()
             ->getResult();
     }

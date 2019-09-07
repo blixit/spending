@@ -62,10 +62,16 @@ class TestController
     /**
      * @Route("/test", name="test")
      */
-    public function test(SpendingManager $spendingManager, SerializerInterface $serializer)
+    public function test(Request $request, SpendingManager $spendingManager, SerializerInterface $serializer)
     {
-        $data = $spendingManager->all();
-        $spendings = $serializer->serialize($data, 'json');
+        $body = json_decode($request->getContent(), true);
+        if (! empty($body)) {
+            $spendings = $spendingManager->search($body);
+        } else {
+            $spendings = $spendingManager->all();
+        }
+
+        $spendings = $serializer->serialize($spendings, 'json');
 
         return new JsonResponse([
           'data' => json_decode($spendings, true)

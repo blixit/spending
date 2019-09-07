@@ -11,9 +11,9 @@ const StyledSelect = styled.select`
 `;
 
 function Selector (props) {
-  const { values, onChange } = props;
+  const { values, selected, ...rest } = props;
   return (
-    <StyledSelect onChange={onChange} {...props}>
+    <StyledSelect value={selected} {...rest}>
       {values.map(
         value => (<option key={String(value)}>{value}</option>)
       )}

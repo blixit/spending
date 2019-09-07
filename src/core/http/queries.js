@@ -10,6 +10,13 @@ const QueriesConfiguration = (config) => {
       sync: true,
       queryError: 'We failed to get data'
     },
+    spending: {
+      latests: {
+        url: url + '/test',
+        sync: true,
+        queryError: 'We failed to get data'
+      }
+    },
     account: {
       balance: {
         url: url + '/account/balance',

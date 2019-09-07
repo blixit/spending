@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Page from 'pages/Page';
 import NewSpendingPage from 'pages/new-spending-page/NewSpendingPage';
 import HomePage from 'pages/HomePage';
+import StatistiquesPage from 'pages/StatistiquesPage';
 
 import Header from './Header';
 import RoutedMenu from './RoutedMenu';
@@ -18,6 +19,7 @@ class RoutedApp extends React.Component {
         content = <NewSpendingPage />;
         break;
       case 'statistiques':
+        content = <StatistiquesPage />;
         break;
       case 'admin':
         break;

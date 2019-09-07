@@ -1,3 +1,4 @@
 export default {
-  base: 'http://localhost:8000'
+  base: 'http://35.180.158.151'
+  // base: 'http://localhost:8000',
 };
