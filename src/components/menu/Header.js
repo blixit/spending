@@ -21,7 +21,7 @@ const BarItem = styled.span`
   justify-content: center;
   flex-direction: column;
   color: ${({ theme }) => theme.fourth() }
-  font-size: ${({ first }) => first ? '1.8em' : '1em'};
+  font-size: ${({ first }) => first ? '1.55em' : '1em'};
   padding-left: ${({ first }) => first ? '10px' : 0 };
   padding-right: ${({ last }) => last ? '10px' : 0 };
 `;

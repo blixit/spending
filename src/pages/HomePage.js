@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Button from 'components/atoms/buttons/Button';
+import ThemedButton from 'components/atoms/buttons/ThemedButton';
 import FilterForm from 'components/forms/filter-form/FilterForm';
 
 import { Get, ReadyQueries as Queries } from 'core/http/query';
@@ -10,6 +10,14 @@ import PageComponent from 'pages/Page';
 
 const Page = styled(PageComponent)`
   flex-direction: column;
+`;
+
+const Label = styled.span`
+  font-size: 1.3em;
+`;
+
+const Price = styled.span`
+  font-size: 1.215em;
 `;
 
 const Item = styled.div`
@@ -30,7 +38,7 @@ class HomePage extends React.Component {
   static displayName = 'HomePage';
 
   state = {
-    showFilter: false,
+    showFilter: true,
     items: []
   };
 
@@ -39,11 +47,20 @@ class HomePage extends React.Component {
     this.setState({ showFilter: !showFilter });
   }
 
+  formatDate = (date) => {
+    const toFormat = new Date(date);
+    return toFormat.toLocaleString();
+  }
+
   renderItem = (item) => {
+    const { id, label, date, price } = item;
     return (
-      <Item key={`${item.id}`}>
-        <span>{item.label}</span>
-        <span>{item.price} €</span>
+      <Item key={`${id}`}>
+        <div>
+          <Label>{label}</Label><br />
+          <span>{this.formatDate(date)}</span>
+        </div>
+        <Price>{price} €</Price>
       </Item>
     );
   }
@@ -66,7 +83,7 @@ class HomePage extends React.Component {
     return (
       <Page {...rest}>
         <React.Fragment>
-          <Button onClick={this.toggleFilter}>Recherche avancée</Button>
+          <ThemedButton color='primary' onClick={this.toggleFilter}>Recherche avancée</ThemedButton>
           {showFilter && <StyledFilterForm
             showFilter={showFilter}
             onFormResult={this.updateItems}

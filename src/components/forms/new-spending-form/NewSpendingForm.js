@@ -5,14 +5,37 @@ import trigger from 'vanillajs-browser-helpers/trigger';
 import { mutate, ReadyMutations as Mutations } from 'core/http/query';
 
 import Selector from 'components/inputs/selector/Selector';
-import DatePicker from 'components/inputs/date-picker/DatePicker';
-import { NumberInput, TextInput } from 'components/inputs/input/Input';
-import Button from 'components/atoms/buttons/Button';
+import DatePickerComponent from 'components/inputs/date-picker/DatePicker';
+import {
+  NumberInput as NumberInputComponent,
+  TextInput
+} from 'components/inputs/input/Input';
+import ThemedButton from 'components/atoms/buttons/ThemedButton';
 import StyledError from 'components/molecules/error/Error';
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+`;
+
+const NumberInput = styled(NumberInputComponent)`
+  width: 30%;
+`;
+
+const DatePicker = styled(DatePickerComponent)`
+  margin-left: 10px;
+`;
+
+const Block = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 auto;
+`;
+const InlineBlock = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 class NewSpendingForm extends React.Component {
@@ -23,7 +46,7 @@ class NewSpendingForm extends React.Component {
   state = {
     category: '',
     date: new Date(),
-    price: 0,
+    price: null,
     name: 'My depense',
     hasError: false,
     errors: {}
@@ -51,7 +74,6 @@ class NewSpendingForm extends React.Component {
       const response = await mutate({ ...add, data: this.state });
       onFormResult && onFormResult(response);
       this.setState({ hasError: false });
-      console.log('mutation done');
       trigger(document, 'refresh:balance', response);
     } catch (e) {
       errors.global = add.queryError || e.message;
@@ -64,19 +86,28 @@ class NewSpendingForm extends React.Component {
     const { onFormResult, ...rest } = this.props;
     return (
       <Form {...rest}>
-        Category
-        <Selector
-          values={this.categories}
-          onChange={this.onCategorySelected}
-        />
-        Date
-        <DatePicker selected={date} onChange={this.onDateChanged} />
-        Price
-        <NumberInput value={price} onChange={this.onPriceChanged} />
-        Name
-        <TextInput value={name} onChange={this.onNameChanged} />
+        <Block>
+          Category
+          <Selector
+            color='primary'
+            values={this.categories}
+            onChange={this.onCategorySelected}
+          />
+        </Block>
+        <Block>
+          Date
+          <DatePicker popperPlacement="left-start" selected={date} onChange={this.onDateChanged} />
+        </Block>
+        <Block>
+          Price
+          <NumberInput value={price} onChange={this.onPriceChanged} />
+        </Block>
+        <Block>
+          Name
+          <TextInput value={name} onChange={this.onNameChanged} />
+        </Block>
         <br />
-        <Button onClick={this.onSubmit}>Ajouter</Button>
+        <ThemedButton color='primary' onClick={this.onSubmit}>Ajouter</ThemedButton>
         {hasError && <StyledError>{errors.global}</StyledError>}
       </Form>
     );

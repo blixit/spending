@@ -10,15 +10,29 @@ const theme1 = {
     third: '#515751',
     fourth: '#F5F9E9', // isabelline
     fifth: '#C2C1A5',
+  },
+  texts: {
+    primary: '#F5F9E9',
+    secondary: '#596869',
+    third: '#515751',
+    fourth: '#F5F9E9', // isabelline
+    fifth: '#C2C1A5',
   }
 };
 
-export const ContextValue = ({ colors }) => ({
+export const ContextValue = ({ colors, texts }) => ({
   primary: () => colors.primary,
   secondary: () => colors.secondary,
   third: () => colors.third,
   fourth: () => colors.fourth,
-  fifth: () => colors.fifth
+  fifth: () => colors.fifth,
+  text: {
+    primary: () => texts.primary,
+    secondary: () => texts.secondary,
+    third: () => texts.third,
+    fourth: () => texts.fourth,
+    fifth: () => texts.fifth,
+  }
 });
 
 export const defaultTheme = ContextValue(theme1);

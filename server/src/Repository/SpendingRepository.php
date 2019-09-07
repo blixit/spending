@@ -44,25 +44,20 @@ class SpendingRepository extends ServiceEntityRepository
                 ->setParameter('price', $minPrice);
         }
 
-        if (is_string($filters['dateStart'])) {
-            $date = new \DateTime($filters['dateStart']);
-            $date = $date->format("Y-m-d")." 00:00:00";
-//            var_dump($date);
+        $dateEnd = is_string($filters['dateEnd'])
+            ? new \DateTime(date('d/m/Y H:i:s', strtotime($filters['dateEnd'])))
+            : new \DateTime('now');
+        $dateEnd->setTime(23, 59, 59, 0);
 
-            $builder = $builder
-                ->andWhere('s.date >= :date')
-                ->setParameter('date', $date);
-        }
+        $dateStart = is_string($filters['dateStart'])
+            ? new \DateTime(date('d/m/Y H:i:s', strtotime($filters['dateStart'])))
+            : $dateEnd->sub(new \DateInterval('P1M'));
+        $dateStart->setTime(0, 0, 0, 0);
 
-        if (is_string($filters['dateEnd'])) {
-            $date = new \DateTime($filters['dateEnd']);
-            $date = $date->format("Y-m-d")." 23:59:59";
-//            var_dump($date);
-
-            $builder = $builder
-                ->andWhere('s.date <= :date')
-                ->setParameter('date', $date);
-        }
+        $builder = $builder
+            ->andWhere('s.date BETWEEN :dateStart and :dateEnd')
+            ->setParameter('dateStart', $dateStart, \Doctrine\DBAL\Types\Type::DATETIME)
+            ->setParameter('dateEnd', $dateEnd, \Doctrine\DBAL\Types\Type::DATETIME);
 
         return $builder
             ->orderBy('s.id', 'DESC')

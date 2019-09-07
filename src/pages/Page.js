@@ -12,6 +12,8 @@ const StyledPage = styled.div`
   overflow-y: auto;
   width: 100%;
   background: ${({ theme }) => theme.fourth() };
+  color: ${({ theme }) => theme.primary() };
+  font-size: 14px;
 `;
 
 const Wrapper = styled.div`
