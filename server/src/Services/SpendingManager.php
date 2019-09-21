@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Entity\Spending;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 
 class SpendingManager
 {
@@ -19,10 +20,24 @@ class SpendingManager
 
     function create($body)
     {
+        $amount = $body['price'] ?? null;
+        $label = $body['name'] ?? null;
+        $date = $body['date'] ?? null;
+        $date = isset($date)
+            ? \DateTime::createFromFormat('d/m/Y H:i:s', $date)
+            : new \DateTime('now');
+
+        if (!isset($amount)) {
+            throw new Exception('The amount can\'t be null');
+        }
+        if (empty($label)) {
+            throw new Exception('The label can\'t be empty');
+        }
+
         $spending = new Spending();
-        $spending->setDate(new \DateTime('now'));
-        $spending->setLabel($body['name'] ?? 'Unknow label');
-        $spending->setPrice($body['price'] ?? 'Unknow price');
+        $spending->setDate($date);
+        $spending->setLabel($label);
+        $spending->setPrice($amount);
 
         $this->entityManager->persist($spending);
         $this->entityManager->flush();
@@ -32,11 +47,19 @@ class SpendingManager
 
     function all()
     {
-        return $this->repository->findBy(array(), array('id' => 'DESC'));
+        return $this->repository->findBy(array(), array('date' => 'DESC'));
     }
 
     function search(array $filters)
     {
         return $this->repository->search($filters);
+    }
+
+    function remove(array $body)
+    {
+        $id = $body['id'];
+        $spenging = $this->entityManager->getReference(Spending::class, $id);
+        $this->entityManager->remove($spenging);
+        $this->entityManager->flush();
     }
 }

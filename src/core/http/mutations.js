@@ -15,6 +15,11 @@ const MutationsConfiguration = (config) => {
         url: url + '/spending/add',
         queryError: 'We failed to store the new entry',
         method: 'post'
+      },
+      remove: {
+        url: url + '/spending/delete',
+        queryError: 'We failed to remove the entry',
+        method: 'post'
       }
     }
   };

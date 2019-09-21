@@ -27,7 +27,7 @@ class Spending
     private $price;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $date;
 

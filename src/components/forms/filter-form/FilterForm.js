@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { mutate, ReadyMutations as Mutations } from 'core/http/query';
+import { toBackendDate } from 'utils/date';
 
 import Selector from 'components/inputs/selector/Selector';
 import DatePickerComponent from 'components/inputs/date-picker/DatePicker';
@@ -41,11 +42,13 @@ const InlineBlock = styled.div`
 class FilterForm extends React.Component {
   static propTypes = {
     onFormResult: PropTypes.func
-  }
+  };
+
   categories = [
     'Restauration',
     'Taxis'
   ];
+
   constructor (props) {
     super(props);
     const now = new Date();
@@ -65,17 +68,17 @@ class FilterForm extends React.Component {
   onCategorySelected = (e) => {
     const category = e.target.value;
     this.setState({ category });
-  }
+  };
 
   onDateChanged = (date, start) => {
     if (start) this.setState({ dateStart: date });
     else this.setState({ dateEnd: date });
-  }
+  };
 
   onPriceChanged = (value, min) => {
     if (min) this.setState({ minPrice: value });
     else this.setState({ maxPrice: value });
-  }
+  };
   
   onNameChanged = (name) => this.setState({ name });
 
@@ -88,8 +91,10 @@ class FilterForm extends React.Component {
 
     const body = {
       ...rest,
-      dateStart: dateStart.toLocaleDateString() + ' ' + dateStart.toLocaleTimeString(),
-      dateEnd: dateEnd.toLocaleDateString() + ' ' + dateEnd.toLocaleTimeString(),
+      dateStart: toBackendDate(dateStart),
+      dateEnd: toBackendDate(dateEnd)
+      // dateStart: dateStart.toLocaleDateString() + ' ' + dateStart.toLocaleTimeString(),
+      // dateEnd: dateEnd.toLocaleDateString() + ' ' + dateEnd.toLocaleTimeString(),
     };
 
     try {

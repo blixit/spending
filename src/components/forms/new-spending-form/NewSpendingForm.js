@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import trigger from 'vanillajs-browser-helpers/trigger';
 
 import { mutate, ReadyMutations as Mutations } from 'core/http/query';
+import { clean as cleanForm } from 'utils/form';
+import { toBackendDate } from 'utils/date';
 
 import Selector from 'components/inputs/selector/Selector';
 import DatePickerComponent from 'components/inputs/date-picker/DatePicker';
@@ -70,13 +72,22 @@ class NewSpendingForm extends React.Component {
     const { onFormResult } = this.props;
     const { add } = Mutations.spending;
 
+    const body = cleanForm(this.state, ['hasError', 'errors']);
+
     try {
-      const response = await mutate({ ...add, data: this.state });
+      const response = await mutate({
+        ...add,
+        data: {
+          ...body,
+          date: toBackendDate(body.date)
+        }
+      });
       onFormResult && onFormResult(response);
       this.setState({ hasError: false });
       trigger(document, 'refresh:balance', response);
     } catch (e) {
-      errors.global = add.queryError || e.message;
+      const { message } = e.response.data || {};
+      errors.global = message || add.queryError || e.message;
       this.setState({ hasError: true, errors });
     }
   }

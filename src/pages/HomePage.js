@@ -1,10 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FaTrash } from 'react-icons/fa';
 
 import ThemedButton from 'components/atoms/buttons/ThemedButton';
 import FilterForm from 'components/forms/filter-form/FilterForm';
 
-import { Get, ReadyQueries as Queries } from 'core/http/query';
+import {
+  Get,
+  ReadyQueries as Queries,
+  mutate,
+  ReadyMutations as Mutations
+} from 'core/http/query';
 
 import PageComponent from 'pages/Page';
 
@@ -34,6 +40,11 @@ const StyledFilterForm = styled(FilterForm)`
   margin-bottom: 20px;
 `;
 
+const Trash = styled(FaTrash)`
+  margin-left: 10px;
+  cursor: ${({ onClick }) => onClick ? 'pointer' : 'default' };
+`;
+
 class HomePage extends React.Component {
   static displayName = 'HomePage';
 
@@ -45,12 +56,25 @@ class HomePage extends React.Component {
   toggleFilter = () => {
     const { showFilter } = this.state;
     this.setState({ showFilter: !showFilter });
-  }
+  };
 
   formatDate = (date) => {
     const toFormat = new Date(date);
     return toFormat.toLocaleString();
-  }
+  };
+
+  onTrashClicked = ({ id }) => {
+    const { items } = this.state;
+    const { remove } = Mutations.spending;
+    mutate({ ...remove, data: {
+      id
+    }}).then(data => {
+      const filtered = items.filter(item => item.id !== id);
+      this.setState({ items: filtered });
+    }).catch(error => {
+      console.error(error);
+    });
+  };
 
   renderItem = (item) => {
     const { id, label, date, price } = item;
@@ -60,21 +84,23 @@ class HomePage extends React.Component {
           <Label>{label}</Label><br />
           <span>{this.formatDate(date)}</span>
         </div>
-        <Price>{price} €</Price>
+        <div>
+          <Price>{price} €</Price>
+          <Trash onClick={() => this.onTrashClicked(item)} />
+        </div>
       </Item>
     );
-  }
+  };
 
   renderItems = (data) => {
-    const items = data.map(
+    return (data || []).map(
       (item) => this.renderItem(item)
     );
-    return items;
-  }
+  };
 
   updateItems = ({ status, data: { data: items } }) => {
     this.setState({ items });
-  }
+  };
 
   render () {
     const { showFilter, items } = this.state;

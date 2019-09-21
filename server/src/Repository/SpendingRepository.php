@@ -70,57 +70,36 @@ class SpendingRepository extends ServiceEntityRepository
         }
 
         $dateEnd = !empty($filterDateEnd) && is_string($filterDateEnd)
-            ? new \DateTime(date('d/m/Y H:i:s', strtotime($filterDateEnd)))
+            ? \DateTime::createFromFormat('d/m/Y H:i:s', $filterDateEnd)
             : new \DateTime('now');
         $dateEnd->setTime(23, 59, 59, 0);
 
-        $dateStart = !empty($filterDateStart) && is_string($filterDateStart)
-            ? new \DateTime(date('d/m/Y H:i:s', strtotime($filterDateStart)))
-            : $dateEnd->sub(new \DateInterval('P1M'));
-        $dateStart->setTime(0, 0, 0, 0);
-
-//        $builder = $builder
-//            ->andWhere('s.date <> null AND s.date BETWEEN :dateStart and :dateEnd')
-//            ->setParameter('dateStart', $dateStart, \Doctrine\DBAL\Types\Type::DATETIME)
-//            ->setParameter('dateEnd', $dateEnd, \Doctrine\DBAL\Types\Type::DATETIME);
-
-        if ($filterScaleActicated) {
-            $builder->orderBy('date', 'DESC');
-        } else {
-            $builder->orderBy('s.date', 'DESC');
+        $dateStart = null;
+        if ($filterDateStart) {
+            $dateStart = \DateTime::createFromFormat('d/m/Y H:i:s', $filterDateStart);
+            $dateStart->setTime(0, 0, 0, 0);
         }
+
+
+        if ($dateStart && $dateEnd) {
+            $builder = $builder
+                ->andWhere('s.date BETWEEN :dateStart and :dateEnd')
+                ->setParameter('dateStart', $dateStart)
+                ->setParameter('dateEnd', $dateEnd);
+        } else if ($dateStart) {
+            $builder = $builder
+                ->andWhere('s.date >= :dateStart')
+                ->setParameter('dateStart', $dateStart);
+        } else if ($dateEnd) {
+            $builder = $builder
+                ->andWhere('s.date <= :dateEnd')
+                ->setParameter('dateEnd', $dateEnd);
+        }
+
+        $builder = $builder->orderBy($filterScaleActicated ? 'date' : 's.date', 'DESC');
 
         return $builder
             ->getQuery()
             ->getResult();
     }
-
-    // /**
-    //  * @return Spending[] Returns an array of Spending objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Spending
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -36,12 +36,18 @@ class TestController
     public function add(Request $request, SpendingManager $spendingManager, SerializerInterface $serializer)
     {
         $body = json_decode($request->getContent(), true);
-        $spending = $spendingManager->create($body);
-        $spending = $serializer->serialize($spending, 'json');
+        try {
+            $spending = $spendingManager->create($body);
+            $spending = $serializer->serialize($spending, 'json');
 
-        return new JsonResponse([
-          'data' => json_decode($spending, true)
-        ]);
+            return new JsonResponse([
+                'data' => json_decode($spending, true)
+            ]);
+        } catch (\Throwable $e) {
+            return new JsonResponse([
+              'message' => $e->getMEssage()
+            ], 400);
+        }
     }
 
     /**
@@ -57,6 +63,17 @@ class TestController
           'data' => json_decode($spendings, true),
           'search' =>  $body
         ]);
+    }
+
+    /**
+     * @Route("/spending/delete", name="search")
+     */
+    public function remove(Request $request, SpendingManager $spendingManager, SerializerInterface $serializer)
+    {
+        $body = json_decode($request->getContent(), true);
+        $spendingManager->remove($body);
+
+        return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }
 
     /**
