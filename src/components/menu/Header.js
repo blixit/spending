@@ -29,11 +29,11 @@ const BarItem = styled.span`
 
 const Header = (props) => {
   const [balance, setBalance] = useState({});
+  const { balance: getBalance } = Queries.account;
+
   useEffect(() => {
     // setting up
     on(document, 'refresh:balance', async (e) => {
-      const { balance: getBalance } = Queries.account;
-
       const response = await query({ ...getBalance });
       setBalance(response.data.data);
       Header.handling = false;

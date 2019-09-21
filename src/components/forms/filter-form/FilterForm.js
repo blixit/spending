@@ -93,8 +93,6 @@ class FilterForm extends React.Component {
       ...rest,
       dateStart: toBackendDate(dateStart),
       dateEnd: toBackendDate(dateEnd)
-      // dateStart: dateStart.toLocaleDateString() + ' ' + dateStart.toLocaleTimeString(),
-      // dateEnd: dateEnd.toLocaleDateString() + ' ' + dateEnd.toLocaleTimeString(),
     };
 
     try {
@@ -105,7 +103,7 @@ class FilterForm extends React.Component {
       errors.global = search.queryError || e.message;
       this.setState({ hasError: true, errors });
     }
-  }
+  };
 
   render() {
     const { dateStart, dateEnd, minPrice, maxPrice, name, hasError, errors } = this.state;

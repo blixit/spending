@@ -57,7 +57,7 @@ class NewSpendingForm extends React.Component {
   onCategorySelected = (e) => {
     const category = e.target.value;
     this.setState({ category });
-  }
+  };
   
   onDateChanged = (date) => this.setState({ date });
   
@@ -90,7 +90,7 @@ class NewSpendingForm extends React.Component {
       errors.global = message || add.queryError || e.message;
       this.setState({ hasError: true, errors });
     }
-  }
+  };
   
   render () {
     const { date, price, name, hasError, errors } = this.state;

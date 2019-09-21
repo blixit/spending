@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import trigger from 'vanillajs-browser-helpers/trigger';
 import { FaTrash } from 'react-icons/fa';
 
 import ThemedButton from 'components/atoms/buttons/ThemedButton';
@@ -71,6 +72,7 @@ class HomePage extends React.Component {
     }}).then(data => {
       const filtered = items.filter(item => item.id !== id);
       this.setState({ items: filtered });
+      trigger(document, 'refresh:balance', data);
     }).catch(error => {
       console.error(error);
     });

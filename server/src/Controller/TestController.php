@@ -19,7 +19,7 @@ class TestController
     {
         $spendings = $spendingManager->all();
         $balance = array_reduce($spendings, static function ($carry, Spending $item) {
-            $carry += $item->getPrice();
+            $carry += (float)$item->getPrice();
             return $carry;
         }, 0);
         return new JsonResponse([
