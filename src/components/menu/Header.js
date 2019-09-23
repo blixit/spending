@@ -43,7 +43,7 @@ const Header = (props) => {
       // cleaning up
       off(document, 'refresh:balance', _ => console.log('demounted'));
     };
-  }, []);
+  }, [getBalance]);
 
   const updateBalance = ({ status, data: { data: balance } }) => {
     setBalance(balance);

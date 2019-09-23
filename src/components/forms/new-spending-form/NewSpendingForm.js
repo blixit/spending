@@ -35,10 +35,6 @@ const Block = styled.div`
   align-items: center;
   flex: 1 0 auto;
 `;
-const InlineBlock = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
 
 class NewSpendingForm extends React.Component {
   categories = [

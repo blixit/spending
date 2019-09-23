@@ -50,7 +50,7 @@ class HomePage extends React.Component {
   static displayName = 'HomePage';
 
   state = {
-    showFilter: true,
+    showFilter: false,
     items: []
   };
 

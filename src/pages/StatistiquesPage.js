@@ -1,10 +1,9 @@
-import React, { useContext, useMemo, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import {
   Bar as BarComponent,
   VictoryBar,
   VictoryChart,
-  VictoryLegend,
   VictoryAxis,
   VictoryTheme,
   VictoryLabel,
@@ -13,7 +12,6 @@ import {
 
 
 import { Get, ReadyQueries as Queries, mutate } from 'core/http/query';
-import { ThemeContext } from 'core/theming/theme';
 
 // import ThemedButton from 'components/atoms/buttons/ThemedButton';
 import ChartFilterForm from 'components/forms/ChartFilterForm';
@@ -55,7 +53,7 @@ const StatistiquesPage = (props) => {
 
   const onRefresh = useCallback( ({ data: { data: retults } }) => {
     setItems(prepareItems(retults));
-  }, []);
+  }, [prepareItems]);
 
   const { latests } = Queries.spending;
 

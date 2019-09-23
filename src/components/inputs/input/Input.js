@@ -23,13 +23,19 @@ export const Input = (props) => {
 };
 
 export const NumberInput = (props) => {
-  const localProps = {...Object.assign({}, { type: 'number' }, props)};
+  const localProps = {
+    ...props,
+    type: 'number'
+  };
   return <Input {...localProps} />;
-}
+};
 
 export const TextInput = (props) => {
-  const localProps = {...Object.assign({}, { type: 'text' }, props)};
+  const localProps = {
+    ...props,
+    type: 'text'
+  };
   return <Input {...localProps} />;
-}
+};
 
 export default Input;

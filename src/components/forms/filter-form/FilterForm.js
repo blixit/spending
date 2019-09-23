@@ -57,9 +57,9 @@ class FilterForm extends React.Component {
       category: '',
       dateStart: before,
       dateEnd: now,
-      minPrice: null,
-      maxPrice: null,
-      name: null,
+      minPrice: undefined,
+      maxPrice: undefined,
+      name: undefined,
       hasError: false,
       errors: {}
     };
