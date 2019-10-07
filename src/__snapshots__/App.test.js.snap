@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[App] renders properly 1`] = `
+Array [
+  <div
+    className="sc-kEYyzF fsRqFK"
+  >
+    <span
+      className="sc-kkGfuU dFuing"
+    >
+      Depenses
+    </span>
+    <span
+      className="sc-kkGfuU izeGNJ"
+      id="balance"
+    >
+       
+    </span>
+    <span
+      className="sc-kkGfuU iCYpfW"
+    >
+      Account
+    </span>
+  </div>,
+  <div
+    className="sc-bdVaJa kjZkLq"
+  >
+    <div
+      className="sc-bwzfXH gouoTZ"
+    >
+      <div
+        className="sc-kGXeez fLCbA sc-bdVaJa kjZkLq"
+      >
+        <div
+          className="sc-bwzfXH gouoTZ"
+        >
+          <button
+            className="sc-gzVnrw fyQnuD sc-bZQynM klBTAi"
+            color="primary"
+            onClick={[Function]}
+          >
+            Recherche avancée
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="sc-iAyFgw dlyhqu"
+  >
+    <a
+      className="sc-hSdWYo hoNnvG"
+      href="/"
+      iscurrentpage="true"
+      onClick={[Function]}
+    >
+      Dépenses
+    </a>
+    <a
+      className="sc-hSdWYo jgXziZ"
+      href="/new"
+      iscurrentpage="false"
+      onClick={[Function]}
+    >
+      Nouvelle dépense
+    </a>
+    <a
+      className="sc-hSdWYo jgXziZ"
+      href="/statistiques"
+      iscurrentpage="false"
+      onClick={[Function]}
+    >
+      Statistiques
+    </a>
+    <a
+      className="sc-hSdWYo jgXziZ"
+      href="/admin"
+      iscurrentpage="false"
+      onClick={[Function]}
+    >
+      Admin
+    </a>
+  </div>,
+]
+`;

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import on from 'vanillajs-browser-helpers/on';
-import off from 'vanillajs-browser-helpers/off';
 
-import { Get, query, ReadyQueries as Queries } from 'core/http/query';
+import { EventContext } from 'core/events/provider';
+import { query, hydrate, use, ReadyQueries as Queries } from 'core/http/query';
 
 const TopBar = styled.div`
   display: flex;
@@ -28,12 +27,16 @@ const BarItem = styled.span`
 `;
 
 const Header = (props) => {
-  const [balance, setBalance] = useState({});
+  const { emitter } = useContext(EventContext);
+
+  const [balance, setBalance] = useState(
+    props.balance ? props.balance.data.data : {}
+  );
   const { balance: getBalance } = Queries.account;
 
   useEffect(() => {
-    // setting up
-    on(document, 'refresh:balance', async (e) => {
+    // setting up event listeners
+    emitter.on('refresh:balance', async (e) => {
       const response = await query({ ...getBalance });
       setBalance(response.data.data);
       Header.handling = false;
@@ -41,23 +44,14 @@ const Header = (props) => {
 
     return () => {
       // cleaning up
-      off(document, 'refresh:balance', _ => console.log('demounted'));
+      emitter.removeAllListeners('refresh:balance', _ => console.log('demounted'));
     };
-  }, [getBalance]);
-
-  const updateBalance = ({ status, data: { data: balance } }) => {
-    setBalance(balance);
-    return balance;
-  };
+  }, [emitter, getBalance]);
 
   return (
     <TopBar>
       <BarItem first >Depenses</BarItem>
       <BarItem id='balance'>
-        <Get
-          {...Queries.account.balance}
-          children={updateBalance}
-        />
         {balance.value} {balance.devise}
       </BarItem>
       <BarItem last >Account</BarItem>
@@ -65,4 +59,7 @@ const Header = (props) => {
   );
 }
 
-export default Header;
+export default hydrate(
+  Header,
+  use(Queries.account.balance, 'balance')
+);

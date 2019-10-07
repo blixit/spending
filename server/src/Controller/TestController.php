@@ -66,7 +66,7 @@ class TestController
     }
 
     /**
-     * @Route("/spending/delete", name="search")
+     * @Route("/spending/delete", name="delete")
      */
     public function remove(Request $request, SpendingManager $spendingManager, SerializerInterface $serializer)
     {
