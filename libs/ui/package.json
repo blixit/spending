@@ -1,0 +1,12 @@
+{
+  "name": "reusable-blixit-ui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "blixit",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "react-styleguidist": "^9.1.16",
+    "webpack": "^4.41.0"
+  }
+}
