@@ -17,10 +17,18 @@ const theme1 = {
     third: '#515751',
     fourth: '#F5F9E9', // isabelline
     fifth: '#C2C1A5',
+  },
+  // to change following the wanted theme
+  guessed: {
+    primary: '#F5F9E9',
+    secondary: '#C2C1A5',
+    third: '#C2C1A5',
+    fourth: '#36453B',
+    fifth: '#36453B',
   }
 };
 
-export const ContextValue = ({ colors, texts }) => ({
+export const ContextValue = ({ colors, texts, guessed }) => ({
   primary: () => colors.primary,
   secondary: () => colors.secondary,
   third: () => colors.third,
@@ -32,8 +40,23 @@ export const ContextValue = ({ colors, texts }) => ({
     third: () => texts.third,
     fourth: () => texts.fourth,
     fifth: () => texts.fifth,
-  }
+  },
+  textColor: bgColor => guessed[bgColor] ? guessed[bgColor] : bgColor
 });
+
+export const guessTextColor = ({ theme, color, bgcolor }) => {
+  if (!theme) { return ''; }
+  
+  if (color) {
+    return theme[color] ? theme[color]() : color;
+  }
+
+  if (bgcolor) {
+    return theme.textColor(bgcolor);
+  }
+
+  return '';
+};
 
 export const defaultTheme = ContextValue(theme1);
 
