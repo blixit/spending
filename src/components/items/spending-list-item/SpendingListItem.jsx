@@ -5,20 +5,30 @@ import { FaTrash } from 'react-icons/fa';
 import { strToDatetime } from 'utils/date';
 
 const Label = styled.span`
-  font-size: 1.3em;
+`;
+const Date = styled.span`
+  font-size: 0.7rem;
+  font-style: italic;
 `;
 
 const Price = styled.span`
-  font-size: 1.215em;
+  font-size: 1.15rem;
+`;
+
+const PriceContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Item = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: ${({ theme }) => theme.white()}
   font-size: 1.2em;
-  border-bottom: 1px solid silver;
 `;
 
 const Trash = styled(FaTrash)`
@@ -38,12 +48,12 @@ const SpendingListItem = ({ item, onDelete }) => {
     <Item>
       <div>
         <Label>{label}</Label><br />
-        <span>{strToDatetime(date)}</span>
+        <Date>{strToDatetime(date)}</Date>
       </div>
-      <div>
+      <PriceContainer>
         <Price>{price} €</Price>
         <Trash onClick={onDeleteItem} />
-      </div>
+      </PriceContainer>
     </Item>
   );
 };

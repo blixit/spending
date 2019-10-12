@@ -3,53 +3,17 @@
 exports[`[App] renders properly 1`] = `
 Array [
   <div
-    className="sc-kEYyzF fsRqFK"
-  >
-    <span
-      className="sc-kkGfuU dFuing"
-    >
-      Depenses
-    </span>
-    <span
-      className="sc-kkGfuU izeGNJ"
-      id="balance"
-    >
-       
-    </span>
-    <span
-      className="sc-kkGfuU iCYpfW"
-    >
-      Account
-    </span>
-  </div>,
-  <div
     className="sc-bdVaJa kjZkLq"
   >
     <div
       className="sc-bwzfXH gouoTZ"
-    >
-      <div
-        className="sc-kGXeez fLCbA sc-bdVaJa kjZkLq"
-      >
-        <div
-          className="sc-bwzfXH gouoTZ"
-        >
-          <button
-            className="sc-gzVnrw fyQnuD sc-bZQynM klBTAi"
-            color="primary"
-            onClick={[Function]}
-          >
-            Recherche avancée
-          </button>
-        </div>
-      </div>
-    </div>
+    />
   </div>,
   <div
-    className="sc-iAyFgw dlyhqu"
+    className="sc-iRbamj dOQpTu"
   >
     <a
-      className="sc-hSdWYo hoNnvG"
+      className="sc-jlyJG epKrOG"
       href="/"
       iscurrentpage="true"
       onClick={[Function]}
@@ -57,7 +21,7 @@ Array [
       Dépenses
     </a>
     <a
-      className="sc-hSdWYo jgXziZ"
+      className="sc-jlyJG kfIYRT"
       href="/new"
       iscurrentpage="false"
       onClick={[Function]}
@@ -65,7 +29,7 @@ Array [
       Nouvelle dépense
     </a>
     <a
-      className="sc-hSdWYo jgXziZ"
+      className="sc-jlyJG kfIYRT"
       href="/statistiques"
       iscurrentpage="false"
       onClick={[Function]}
@@ -73,7 +37,7 @@ Array [
       Statistiques
     </a>
     <a
-      className="sc-hSdWYo jgXziZ"
+      className="sc-jlyJG kfIYRT"
       href="/admin"
       iscurrentpage="false"
       onClick={[Function]}

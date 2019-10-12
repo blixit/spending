@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[components/forms/filter-form] FilterForm should render properly 1`] = `
+<form
+  className="sc-jTzLTM iNxaQE"
+>
+  <div
+    className="sc-jzJRlG fKTnNB"
+  >
+    <div
+      className="sc-iwsKbI LIYKF"
+    >
+      <label
+        className="sc-ifAKCX hbDuiX sc-dnqmqq kYHIQY"
+      >
+        <span>
+          From
+        </span>
+        <div
+          className="react-datepicker-wrapper"
+        >
+          <div
+            className="react-datepicker__input-container"
+          >
+            <input
+              className="sc-gzVnrw koFpYU"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="select a date"
+              readOnly={false}
+              type="text"
+              value="18/09/2019"
+            />
+          </div>
+        </div>
+      </label>
+    </div>
+    <div
+      className="sc-iwsKbI LIYKF"
+    >
+      <label
+        className="sc-ifAKCX gtpqFH sc-dnqmqq dsKfiS"
+      >
+        <span>
+          To
+        </span>
+        <div
+          className="react-datepicker-wrapper"
+        >
+          <div
+            className="react-datepicker__input-container"
+          >
+            <input
+              className="sc-gzVnrw koFpYU"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="select a date"
+              readOnly={false}
+              type="text"
+              value="18/10/2019"
+            />
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>
+  <div
+    className="sc-jzJRlG fKTnNB"
+  >
+    <div
+      className="sc-bZQynM funnpa sc-fjdhpX gXwiOt"
+      placeholder="Ex: -45 for -45€"
+    >
+      <label
+        className="sc-ifAKCX hbDuiX"
+      >
+        <span>
+          Min amount
+        </span>
+        <input
+          className="sc-bxivhb dwfPSM sc-fjdhpX gXwiOt"
+          onChange={[Function]}
+          placeholder="Ex: -45 for -45€"
+          type="number"
+        />
+      </label>
+    </div>
+    <div
+      className="sc-bZQynM funnpa sc-fjdhpX gXwiOt"
+      placeholder="Ex: 45 for 45€"
+    >
+      <label
+        className="sc-ifAKCX gtpqFH"
+      >
+        <span>
+          Max amount
+        </span>
+        <input
+          className="sc-bxivhb uZeYE sc-fjdhpX gXwiOt"
+          onChange={[Function]}
+          placeholder="Ex: 45 for 45€"
+          type="number"
+        />
+      </label>
+    </div>
+  </div>
+  <div
+    className="sc-bZQynM funnpa"
+  >
+    <label
+      className="sc-ifAKCX hbDuiX"
+    >
+      <span>
+        Name
+      </span>
+      <input
+        className="sc-bxivhb dwfPSM"
+        onChange={[Function]}
+        type="text"
+      />
+    </label>
+  </div>
+  <div
+    className="sc-VigVT ddMFQP"
+    color="primary"
+  >
+    <label
+      className="sc-ifAKCX hbDuiX"
+    >
+      <span>
+        Category
+      </span>
+      <select
+        className="sc-gZMcBi hWLNG"
+        color="primary"
+        onChange={[Function]}
+      >
+        <option>
+          Restauration
+        </option>
+        <option>
+          Taxis
+        </option>
+      </select>
+    </label>
+  </div>
+  <br />
+  <button
+    className="sc-bwzfXH cuSBsa sc-htpNat knmdAQ"
+    onClick={[Function]}
+  >
+    Filtrer
+  </button>
+</form>
+`;

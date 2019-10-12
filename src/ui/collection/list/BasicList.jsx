@@ -1,22 +1,22 @@
 import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-const List = (props) => {
+const BasicList = props => {
   const { items, children: renderItem } = props;
   
   const renderedItems = useCallback(() => {
     return (items || []).map(
-      (item) => renderItem({ ...item}, item.id)
+      item => renderItem(item, item.id)
     );
   }, [items, renderItem]);
 
   return renderedItems();
 };
 
-List.displayName = 'List';
+BasicList.displayName = 'BasicList';
 
-List.propsType = {
+BasicList.propsType = {
   items: PropTypes.array
 };
 
-export default List;
+export default BasicList;

@@ -1,9 +1,19 @@
 import {
+  FaFilter,
   FaPlus,
-  FaTrash
+  FaSlidersH,
+  FaTimes,
+  FaTrash,
+  FaUser,
+  FaUserCircle,
  } from 'react-icons/fa';
 
  export default {
+   filter: FaFilter,
    plus: FaPlus,
-   trash: FaTrash
+   slidersH: FaSlidersH,
+   times: FaTimes,
+   trash: FaTrash,
+   user: FaUser,
+   userCirle: FaUserCircle,
  };

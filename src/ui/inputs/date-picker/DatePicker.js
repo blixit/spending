@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -29,32 +29,36 @@ registerLocale('fr', fr); // register it with the name you want
  */
 const StyledDatePicker = styled(DatePicker)`
   height: 30px;
-  width: 80px;
+  width: 70px;
   background: transparent;
   border: 0;
   border-bottom: 1px solid silver;
   line-height: 16px;
-  font-size: 16px;
+  font-size: 0.8rem;
+  color: ${({ theme }) => theme.primary()};
+
   &:focus{
     outline: none;
+    border-bottom: 1px solid ${({ theme }) => theme.primary()};
   }
 `;
 
-function DatePickerComponent (props) {
-  const { onChange } = props;
+const DatePickerComponent = props => {
+  const { selected, onChange, arabic, placeholderText } = props;
 
-  function change(date) {
-    console.log({ date });
-
-    // onChange(date.toLocaleDateString() + ' ' + date.toLocaleTimeString());
-    onChange(date);
-  };
+  const change = useCallback(
+    onChange ? date => onChange(date) : null,
+    [onChange]
+  );
 
   return (
     <StyledDatePicker
       dateFormat="dd/MM/yyyy"
       locale='fr'
-      selected={props.selected}
+      showPopperArrow={false}
+      placeholderText={placeholderText || 'select a date'}
+      popperPlacement={arabic ? 'bottom-end' : 'bottom-start'}
+      selected={selected}
       {...props}
       onChange={change}
     />

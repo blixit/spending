@@ -2,19 +2,20 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
-  min-height: 25px;
-  lineheight: 25px;
+  min-height: 18px;
+  lineheight: 18px;
   font-size: 0.8rem;
-  border: 0;
-  border-bottom: 1px solid silver;
+  border: 1px solid silver;
+  border-radius: 3px;
   padding-right: 5px;
   padding-left: 5px;
   background: transparent;
   color: ${({ theme }) => theme.primary()};
+  text-align: ${({ arabic }) => arabic ? 'right' : 'left'};
 
   &:focus{
     outline: none;
-    border-bottom: 1px solid ${({ theme }) => theme.primary()};
+    border: 1px solid ${({ theme }) => theme.primary()};
   }
 
   ::-webkit-input-placeholder {
@@ -44,20 +45,10 @@ export const Input = (props) => {
   );
 };
 
-export const NumberInput = (props) => {
-  const localProps = {
-    ...props,
-    type: 'number'
-  };
-  return <Input {...localProps} />;
-};
+export const NumberInput = props =>
+  <Input type='number' {...props} />;
 
-export const TextInput = (props) => {
-  const localProps = {
-    ...props,
-    type: 'text'
-  };
-  return <Input {...localProps} />;
-};
+export const TextInput = props =>
+  <Input type='text' {...props} />;
 
 export default Input;

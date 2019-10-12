@@ -6,26 +6,19 @@ import { mutate, ReadyMutations as Mutations } from 'core/http/query';
 import { toBackendDate } from 'utils/date';
 
 import ThemedButton from 'ui/atoms/buttons/ThemedButton';
-import Selector from 'ui/inputs/selector/Selector';
-import DatePickerComponent from 'ui/inputs/date-picker/DatePicker';
-import {
-  NumberInput as NumberInputComponent,
-  TextInput
-} from 'ui/inputs/input/Input';
 
 import StyledError from 'components/molecules/error/Error';
+import FormInput from 'ui/forms/form-input/FormInput';
+import FormDate from 'ui/forms/form-date/FormDate';
+import FormSelector from 'ui/forms/form-selector/FormSelector';
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
 `;
 
-const NumberInput = styled(NumberInputComponent)`
-  width: 30%;
-`;
-
-const DatePicker = styled(DatePickerComponent)`
-  margin-left: 10px;
+const FormNumberInput = styled(FormInput)`
+  max-width: 150px;
 `;
 
 const Block = styled.div`
@@ -33,11 +26,7 @@ const Block = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex: 1 0 auto;
-`;
-const InlineBlock = styled.div`
-  display: flex;
-  flex-direction: row;
+  flex: auto;
 `;
 
 class FilterForm extends React.Component {
@@ -46,8 +35,8 @@ class FilterForm extends React.Component {
   };
 
   categories = [
-    'Restauration',
-    'Taxis'
+    { id: 1, option: 'Restauration' },
+    { id: 2, option: 'Taxis' }
   ];
 
   constructor (props) {
@@ -66,24 +55,19 @@ class FilterForm extends React.Component {
     };
   }
 
-  onCategorySelected = (e) => {
-    const category = e.target.value;
-    this.setState({ category });
-  };
+  onCategorySelected = e => this.setState({ category: e.target.value });
 
-  onDateChanged = (date, start) => {
-    if (start) this.setState({ dateStart: date });
-    else this.setState({ dateEnd: date });
-  };
+  onDateStartChanged = dateStart => this.setState({ dateStart });
 
-  onPriceChanged = (value, min) => {
-    if (min) this.setState({ minPrice: value });
-    else this.setState({ maxPrice: value });
-  };
+  onDateEndChanged = dateEnd => this.setState({ dateEnd });
+
+  onPriceMinChanged = minPrice => this.setState({ minPrice });
+
+  onPriceMaxChanged = maxPrice => this.setState({ maxPrice });
   
-  onNameChanged = (name) => this.setState({ name });
+  onNameChanged = name => this.setState({ name });
 
-  onSubmit = async (e) => {
+  onSubmit = async e => {
     e.preventDefault();
 
     const { errors, dateStart, dateEnd, ...rest } = this.state;
@@ -113,38 +97,48 @@ class FilterForm extends React.Component {
     return (
       <Form {...rest}>
         <Block>
-          Category
-          <Selector
-            color='primary'
-            style={{ width: '80%' }}
-            values={this.categories}
-            onChange={this.onCategorySelected}
+          <FormDate
+            label='From'
+            selected={dateStart}
+            onChange={this.onDateStartChanged}
+          />
+          <FormDate arabic
+            label='To'
+            selected={dateEnd}
+            onChange={this.onDateEndChanged}
           />
         </Block>
-        <InlineBlock>
-          Date Start
-          <DatePicker selected={dateStart} onChange={date => this.onDateChanged(date, true)} />
-        </InlineBlock>
-        <InlineBlock>
-          Date End
-          <DatePicker selected={dateEnd} onChange={date => this.onDateChanged(date)} />
-        </InlineBlock>
         <Block>
-          Price Min
-          <NumberInput value={minPrice} onChange={e => this.onPriceChanged(e, true)} />
-          Price Max
-          <NumberInput value={maxPrice} onChange={e => this.onPriceChanged(e)} />
-        </Block>
-        <Block>
-          Name
-          <TextInput
-            value={name}
-            onChange={this.onNameChanged}
-            style={{ width: '85%' }}
+          <FormNumberInput
+            type='number'
+            label='Min amount'
+            placeholder='Ex: -45 for -45€'
+            value={minPrice}
+            onChange={this.onPriceMinChanged}
+          />
+          <FormNumberInput arabic
+            type='number'
+            label='Max amount'
+            placeholder='Ex: 45 for 45€'
+            value={maxPrice}
+            onChange={this.onPriceMaxChanged}
           />
         </Block>
+        <FormInput
+          type='text'
+          label='Name'
+          value={name}
+          onChange={this.onNameChanged}
+        />
+        <FormSelector
+          label='Category'
+          color='primary'
+          // style={{ width: '80%' }}
+          values={this.categories}
+          onChange={this.onCategorySelected}
+        />
         <br />
-        <ThemedButton color='primary' onClick={this.onSubmit}>Filtrer</ThemedButton>
+        <ThemedButton bgcolor='primary' onClick={this.onSubmit}>Filtrer</ThemedButton>
         {hasError && <StyledError>{errors.global}</StyledError>}
       </Form>
     );

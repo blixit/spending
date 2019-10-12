@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const BarItemUI = styled.span`
+const BarItemUI = styled.div`
   flex: 1 0 33%;
   text-align: center;
   height: 50px;
@@ -9,7 +9,7 @@ const BarItemUI = styled.span`
   justify-content: center;
   flex-direction: column;
   color: ${({ theme }) => theme.fourth() };
-  font-size: ${({ first }) => first ? '1.48em' : '1em'};
+  font-size: ${({ first }) => first ? '1.3rem' : '1rem'};
   padding-left: ${({ first }) => first ? '10px' : 0 };
   padding-right: ${({ last }) => last ? '10px' : 0 };
 `;

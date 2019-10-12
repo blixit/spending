@@ -13,10 +13,8 @@ const Button = styled(ButtonComponent)`
     box-shadow: 1px 1px 3px 1px silver;
   }
   background-color: ${({ theme, bgcolor }) => {
-    if (bgcolor) {
-      return theme[bgcolor] ? theme[bgcolor]() : bgcolor;
-    }
-    return '';
+    if (!bgcolor) { return ''; }
+    return theme[bgcolor] ? theme[bgcolor]() : bgcolor;
   }};
   color: ${props => guessTextColor(props)};
 `;

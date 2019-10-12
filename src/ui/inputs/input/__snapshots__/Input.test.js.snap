@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[inputs/input] Inputs [inputs/input] NumberInput should render properly 1`] = `
+<input
+  className="sc-bdVaJa dqOyiS"
+  onChange={[Function]}
+  type="number"
+  value="test"
+/>
+`;

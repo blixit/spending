@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[collection/vertical-list] VerticalList renders properly 1`] = `
+<div>
+  <div>
+    Item content
+  </div>
+</div>
+`;

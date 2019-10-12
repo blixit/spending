@@ -8,6 +8,7 @@ const TopBarUI = styled.div`
   z-index: 10;
   position: fixed;
   width: 100%;
+  box-shadow: 0px 0px 5px 10px silver;
 `;
 
 const TopBar = props => <TopBarUI {...props} />;

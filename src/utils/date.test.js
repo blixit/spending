@@ -17,7 +17,7 @@ describe('[utils] date', () => {
       expect(formatted).toBe('1996-02-02 03:04:05');
     });
   });
-  describe.only('strToDatetime', () => {
+  describe('strToDatetime', () => {
     it.each([
       '1996-02-02T23:38:53+02:00',
     ])('should return the formatted date for the user', (date) => {

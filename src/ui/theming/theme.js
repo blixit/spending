@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -9,14 +9,14 @@ const theme1 = {
     secondary: '#596869',
     third: '#515751',
     fourth: '#F5F9E9', // isabelline
-    fifth: '#C2C1A5',
+    fifth: '#C2C1A5'
   },
   texts: {
     primary: '#F5F9E9',
     secondary: '#596869',
     third: '#515751',
     fourth: '#F5F9E9', // isabelline
-    fifth: '#C2C1A5',
+    fifth: '#C2C1A5'
   },
   // to change following the wanted theme
   guessed: {
@@ -24,7 +24,7 @@ const theme1 = {
     secondary: '#C2C1A5',
     third: '#C2C1A5',
     fourth: '#36453B',
-    fifth: '#36453B',
+    fifth: '#36453B'
   }
 };
 
@@ -34,14 +34,15 @@ export const ContextValue = ({ colors, texts, guessed }) => ({
   third: () => colors.third,
   fourth: () => colors.fourth,
   fifth: () => colors.fifth,
+  textColor: (bgColor) => guessed[bgColor] ? guessed[bgColor] : bgColor,
+  white: () => 'white',
   text: {
     primary: () => texts.primary,
     secondary: () => texts.secondary,
     third: () => texts.third,
     fourth: () => texts.fourth,
     fifth: () => texts.fifth,
-  },
-  textColor: bgColor => guessed[bgColor] ? guessed[bgColor] : bgColor
+  }
 });
 
 export const guessTextColor = ({ theme, color, bgcolor }) => {
@@ -60,7 +61,7 @@ export const guessTextColor = ({ theme, color, bgcolor }) => {
 
 export const defaultTheme = ContextValue(theme1);
 
-export const ThemeContext = createContext(defaultTheme);
+// export const ThemeContext = createContext(defaultTheme);
 
-export default ({ children, theme }) =>
-  <ThemeProvider theme={theme || defaultTheme} >{children}</ThemeProvider>;
+export default ({ theme, ...rest }) =>
+  <ThemeProvider theme={theme || defaultTheme} {...rest} />;

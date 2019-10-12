@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[inputs/selector] Selector renders properly 1`] = `
+<select
+  className="sc-bdVaJa kNYkjY"
+  label="Label"
+  onChange={[MockFunction]}
+>
+  <option>
+    item 1
+  </option>
+</select>
+`;

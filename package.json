@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "homepage": ".",
-  "workspaces": ["libs/ui"],
   "dependencies": {
     "axios": "^0.19.0",
     "date-fns": "^2.0.1",
@@ -21,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=node",
     "eject": "react-scripts eject",
     "test:debug": "npm run test",
     "test:cov": "npm run test -- --coverage"
@@ -42,7 +41,9 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^24.0.18",
     "craco-alias": "^1.0.4",
+    "jest-styled-components": "^6.3.3",
     "react-test-renderer": "^16.9.0"
   }
 }

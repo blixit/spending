@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[collection/list] BasicList renders properly 1`] = `
+<div>
+  <span>
+    Test 
+    0
+  </span>
+  <span>
+    Test 
+    2
+  </span>
+  <span>
+    Test 
+    4
+  </span>
+  <span>
+    Test 
+    6
+  </span>
+  <span>
+    Test 
+    8
+  </span>
+</div>
+`;

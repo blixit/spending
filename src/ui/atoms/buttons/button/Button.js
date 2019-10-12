@@ -10,4 +10,6 @@ const StyledButton = styled.button`
 
 const Button = props => <StyledButton {...props} />;
 
+Button.displayName = 'Button';
+
 export default Button;

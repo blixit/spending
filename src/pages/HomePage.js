@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { EventContext } from 'core/events/provider';
 
-import ThemedButton from 'ui/atoms/buttons/ThemedButton';
+import IconButtonUI from 'ui/atoms/buttons/IconButton';
 import FilterForm from 'components/forms/filter-form/FilterForm';
-import List from 'ui/collection/list/List';
+import VerticalList from 'ui/collection/vertical-list/VerticalList';
 import SpendingListItem from 'components/items/spending-list-item/SpendingListItem';
 
 import {
@@ -17,13 +17,21 @@ import { hydrate, use } from 'core/hocs/query-wrapper';
 
 import PageComponent from 'pages/Page';
 
+const IconButton = styled(IconButtonUI)`
+  width: 24px;
+`;
+
 const Page = styled(PageComponent)`
   flex-direction: column;
 `;
 
 const StyledFilterForm = styled(FilterForm)`
-  margin-top: ${({ showFilter }) => showFilter ? '20px' : 0 };
-  margin-bottom: 20px;
+  margin-top: ${({ showFilter }) => showFilter ? '5px' : 0 };
+`;
+
+const ListTitle = styled.span`
+  font-weight: bold;
+  padding-top: 10px;
 `;
 
 export class HomePage extends React.Component {
@@ -64,25 +72,34 @@ export class HomePage extends React.Component {
   updateItems = ({ status, data: { data: items } }) =>
     this.setState({ items });
 
+  renderItem = (item, key) => (
+    <SpendingListItem
+      item={item}
+      key={key}
+      onDelete={this.onRemoveItem}
+    />
+  );
+
   render () {
     const { showFilter, items } = this.state;
     const { ...rest } = this.props;
+    const icon = {
+      type: showFilter ? 'times' : 'filter',
+      color: 'white'
+    };
 
     return (
       <Page {...rest}>
-        <ThemedButton color='primary' onClick={this.toggleFilter}>Recherche avancée</ThemedButton>
+        <IconButton icon={icon} bgcolor='primary' onClick={this.toggleFilter}>Recherche avancée</IconButton>
         {showFilter && <StyledFilterForm
           showFilter={showFilter}
           onFormResult={this.updateItems}
         />}
-        <List items={items} >
-          {(item, key) =>
-            <SpendingListItem
-              item={item}
-              key={key}
-              onDelete={this.onRemoveItem}
-          />}
-        </List>
+        <ListTitle>Your depenses:</ListTitle>
+        <VerticalList
+          items={items}
+          renderItem={this.renderItem}
+        />
       </Page>
     );
   }

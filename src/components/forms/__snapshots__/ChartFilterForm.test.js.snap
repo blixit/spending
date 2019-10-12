@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[components/forms/filter-form] ChartFilterForm should render properly 1`] = `
+<div
+  className="sc-bwzfXH iRHYSf"
+>
+  Echelle de temps
+  <select
+    className="sc-bdVaJa eJaiLQ"
+    color="primary"
+    onChange={[Function]}
+    style={
+      Object {
+        "width": "80%",
+      }
+    }
+    value="Day"
+  >
+    <option>
+      All
+    </option>
+    <option>
+      Year
+    </option>
+    <option>
+      Semester
+    </option>
+    <option>
+      Quarter
+    </option>
+    <option>
+      Month
+    </option>
+    <option>
+      Week
+    </option>
+    <option>
+      Day
+    </option>
+  </select>
+</div>
+`;
