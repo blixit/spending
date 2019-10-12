@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Selector from 'components/inputs/selector/Selector';
+import Selector from 'ui/inputs/selector/Selector';
 
 const Block = styled.div`
   display: flex;

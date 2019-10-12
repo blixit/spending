@@ -1,6 +1,12 @@
 const path = require('path');
 
 module.exports = {
+  styleguideComponents: {
+    Wrapper: path.resolve('src/doc-only/Wrapper')
+  },
+  require: [
+    path.resolve('styleguide.setup.js')
+  ],
   moduleAliases: {
     'ui': path.resolve(__dirname, 'src'),
     'atoms': path.resolve(__dirname, 'src/atoms'),
@@ -40,8 +46,5 @@ module.exports = {
       name: 'Doc',
       components: 'src/doc-only/*.js'
     }
-  ],
-  styleguideComponents: {
-    Wrapper: path.resolve('src/doc-only/Wrapper')
-  }
+  ]
 };

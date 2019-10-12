@@ -7,26 +7,24 @@ import { guessTextColor } from 'ui/theming/theme';
 import ButtonComponent from './ThemedButton';
 
 const Button = styled(ButtonComponent)`
-  display: flex;
-
   svg {
     fill: ${({ iconThemedColor: color, theme }) => guessTextColor({ color, theme })};
   }
-
-  span {
-    margin-left: 3px;
-  }
 `;
 
+const iconStyle = {
+  // position: 'absolute',
+  // top: '5px'
+};
+
 const IconButton = props => {
-  const { icon, children, theme, ...rest } = props;
+  const { icon, children, ...rest } = props;
   const { type, color } = icon;
   const Icon = AppIcons[type];
 
   return (
     <Button iconThemedColor={color} {...rest} >
-      <Icon color={color} />
-      {children && <span>{children}</span>}
+      <Icon color={color} style={iconStyle} />
     </Button>
   );
 };

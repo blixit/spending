@@ -4,8 +4,14 @@
   "main": "index.js",
   "author": "blixit",
   "license": "MIT",
+  "scripts": {
+    "start": "npx styleguidist server",
+    "build": "npx styleguidist build",
+    "test": "react-scripts test"
+  },
   "dependencies": {},
   "devDependencies": {
+    "babel-loader": "^8.0.6",
     "react-styleguidist": "^9.1.16",
     "webpack": "^4.41.0"
   }

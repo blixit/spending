@@ -2,19 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-  min-height: 30px;
+  min-height: 24px;
   lineheight: 25px;
-  font-size: 16px;
   padding: 5px;
   cursor: pointer;
 `;
 
-class Button extends React.Component {
-  render() {
-    return (
-      <StyledButton {...(this.props)} />
-    );
-  }
-}
+const Button = props => <StyledButton {...props} />;
 
 export default Button;

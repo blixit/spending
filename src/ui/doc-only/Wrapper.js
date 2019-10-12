@@ -1,9 +1,12 @@
 import React from 'react';
+
 import ThemeProvider from 'theming/theme';
 
 const Wrapper = ({ children, ...rest }) => (
-  <ThemeProvider {...rest} >
-    {children}
+  <ThemeProvider>
+    <div {...rest} >
+      {children}
+    </div>
   </ThemeProvider>
 );
 

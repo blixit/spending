@@ -1,30 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import styled from 'styled-components';
 
 import { EventContext } from 'core/events/provider';
 import { query, hydrate, use, ReadyQueries as Queries } from 'core/http/query';
 
-const TopBar = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background: ${({ theme }) => theme.third() };
-  z-index: 10;
-  position: fixed;
-  width: 100%;
-`;
-
-const BarItem = styled.span`
-  flex: 1 0 33%;
-  text-align: center;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  color: ${({ theme }) => theme.fourth() };
-  font-size: ${({ first }) => first ? '1.48em' : '1em'};
-  padding-left: ${({ first }) => first ? '10px' : 0 };
-  padding-right: ${({ last }) => last ? '10px' : 0 };
-`;
+import TopBar from 'ui/structure/menu/TopBar';
+import BarItem from 'ui/structure/menu/BarItem';
 
 const Header = (props) => {
   const { emitter } = useContext(EventContext);

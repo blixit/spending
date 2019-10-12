@@ -1,32 +1,8 @@
 import React, { useCallback } from 'react';
-import styled from 'styled-components';
 import { Link, withRouter } from 'react-router-dom';
 
-const Menu = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: stretch;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  z-index: 10;
-`;
-
-const MenuItem = styled(Link)`
-  padding: 10px;
-  flex: 0 1 25%;
-  text-align: center;
-  text-decoration: none;
-  font-size: 0.95em;
-  color: grey;
-  background-color: ${({ theme, iscurrentpage }) =>
-    iscurrentpage === 'true' ? theme.primary() : theme.fifth()
-  };
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
+import Menu from 'ui/structure/menu/TabsMenu';
+import getMenuItem from 'ui/structure/menu/TabsMenuItem';
 
 export const PATHS = {
   new: 'new',
@@ -36,7 +12,8 @@ export const PATHS = {
 
 const RoutedMenu = ({ location }) => {
   const { pathname: page } = location;
-  
+
+  const MenuItem = getMenuItem({ Link });
 
   const Content = useCallback(_ => {
     return (

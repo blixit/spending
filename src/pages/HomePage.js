@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { EventContext } from 'core/events/provider';
 
-import ThemedButton from 'components/atoms/buttons/ThemedButton';
+import ThemedButton from 'ui/atoms/buttons/ThemedButton';
 import FilterForm from 'components/forms/filter-form/FilterForm';
-import List from 'components/items/list/List';
+import List from 'ui/collection/list/List';
 import SpendingListItem from 'components/items/spending-list-item/SpendingListItem';
 
 import {

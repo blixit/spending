@@ -5,13 +5,14 @@ import PropTypes from 'prop-types';
 import { mutate, ReadyMutations as Mutations } from 'core/http/query';
 import { toBackendDate } from 'utils/date';
 
-import Selector from 'components/inputs/selector/Selector';
-import DatePickerComponent from 'components/inputs/date-picker/DatePicker';
+import ThemedButton from 'ui/atoms/buttons/ThemedButton';
+import Selector from 'ui/inputs/selector/Selector';
+import DatePickerComponent from 'ui/inputs/date-picker/DatePicker';
 import {
   NumberInput as NumberInputComponent,
   TextInput
-} from 'components/inputs/input/Input';
-import ThemedButton from 'components/atoms/buttons/ThemedButton';
+} from 'ui/inputs/input/Input';
+
 import StyledError from 'components/molecules/error/Error';
 
 const Form = styled.form`
