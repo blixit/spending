@@ -9,11 +9,11 @@ import List from 'ui/collection/list/List';
 import SpendingListItem from 'components/items/spending-list-item/SpendingListItem';
 
 import {
-  hydrate, use,
   ReadyQueries as Queries,
   mutate,
   ReadyMutations as Mutations,
 } from 'core/http/query';
+import { hydrate, use } from 'core/hocs/query-wrapper';
 
 import PageComponent from 'pages/Page';
 
@@ -47,7 +47,7 @@ export class HomePage extends React.Component {
 
   onRemoveItem = ({ id }) => {
     const { items } = this.state;
-    const { emitter } = this.context;
+    const { eventManager } = this.context;
     const { remove } = Mutations.spending;
 
     mutate({ ...remove, data: {
@@ -55,7 +55,7 @@ export class HomePage extends React.Component {
     }}).then(data => {
       const filtered = items.filter(item => item.id !== id);
       this.setState({ items: filtered });
-      emitter.emit('refresh:balance', data);
+      eventManager.emit('refresh:balance', data);
     }).catch(error => {
       console.error(error);
     });

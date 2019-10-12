@@ -1,8 +1,18 @@
 import React, { createContext } from 'react';
 import EventEmitter from 'events';
 
+/**
+ * Facade to prevent coupling with this library
+ */
+class Emitter extends EventEmitter {
+  emit = (message, data) => super.emit(message, data);
+  on = (message, callback) => super.on(message, callback);
+  removeAllListeners = (message, callback) =>
+    super.removeAllListeners(message, callback);
+};
+
 const defaultValue = {
-  emitter: new EventEmitter()
+  eventManager: new Emitter()
 };
 
 export const EventContext = createContext(defaultValue);

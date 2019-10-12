@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { EventContext } from 'core/events/provider';
-import { query, hydrate, use, ReadyQueries as Queries } from 'core/http/query';
+import { query, ReadyQueries as Queries } from 'core/http/query';
+import { hydrate, use } from 'core/hocs/query-wrapper';
 
 import TopBar from 'ui/structure/menu/TopBar';
 import BarItem from 'ui/structure/menu/BarItem';
 
 const Header = (props) => {
-  const { emitter } = useContext(EventContext);
+  const { eventManager } = useContext(EventContext);
 
   const [balance, setBalance] = useState(
     props.balance ? props.balance.data.data : {}
@@ -16,7 +17,7 @@ const Header = (props) => {
 
   useEffect(() => {
     // setting up event listeners
-    emitter.on('refresh:balance', async (e) => {
+    eventManager.on('refresh:balance', async (e) => {
       const response = await query({ ...getBalance });
       setBalance(response.data.data);
       Header.handling = false;
@@ -24,9 +25,9 @@ const Header = (props) => {
 
     return () => {
       // cleaning up
-      emitter.removeAllListeners('refresh:balance', _ => console.log('demounted'));
+      eventManager.removeAllListeners('refresh:balance', _ => console.log('demounted'));
     };
-  }, [emitter, getBalance]);
+  }, [eventManager, getBalance]);
 
   return (
     <TopBar>

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { EventContext } from 'core/events/provider';
-// import trigger from 'vanillajs-browser-helpers/trigger';
 
 import { mutate, ReadyMutations as Mutations } from 'core/http/query';
 import { clean as cleanForm } from 'utils/form';
@@ -67,7 +66,7 @@ class NewSpendingForm extends React.Component {
   onSubmit = async (e) => {
     e.preventDefault();
 
-    const { emitter } = this.context;
+    const { eventManager } = this.context;
     const { errors } = this.state;
     const { onFormResult } = this.props;
     const { add } = Mutations.spending;
@@ -84,8 +83,7 @@ class NewSpendingForm extends React.Component {
       });
       onFormResult && onFormResult(response);
       this.setState({ hasError: false });
-      // trigger(document, 'refresh:balance', response);
-      emitter.emit('refresh:balance', response);
+      eventManager.emit('refresh:balance', response);
     } catch (e) {
       const { message } = e.response.data || {};
       errors.global = message || add.queryError || e.message;
