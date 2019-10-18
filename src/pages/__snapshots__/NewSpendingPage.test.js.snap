@@ -1,7 +1,117 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`[pages] NewSpendingPage should render properly 1`] = `
-<h1>
-  Something went wrong.
-</h1>
+<div
+  className="sc-fjdhpX fVtbLo"
+>
+  <div
+    className="sc-jzJRlG ekhnYa"
+  >
+    <form
+      className="sc-jTzLTM iNxaQE"
+    >
+      <div
+        className="sc-ifAKCX bQstZT"
+      >
+        <label
+          className="sc-bwzfXH cJnpOh sc-bxivhb jqRqDB"
+        >
+          <span>
+            Date
+          </span>
+          <div
+            className="react-datepicker-wrapper"
+          >
+            <div
+              className="react-datepicker__input-container"
+            >
+              <input
+                className="sc-bdVaJa fEZIYW"
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                placeholder="select a date"
+                readOnly={false}
+                type="text"
+                value="18/10/2019"
+              />
+            </div>
+          </div>
+        </label>
+      </div>
+      <div
+        className="sc-gzVnrw dnKKOo"
+        placeholder="Ex: -45 for -45€"
+        value={null}
+      >
+        <label
+          className="sc-bwzfXH cJnpOh"
+        >
+          <span>
+            Amount
+          </span>
+          <input
+            className="sc-EHOje LArJT"
+            onChange={[Function]}
+            placeholder="Ex: -45 for -45€"
+            type="number"
+            value={null}
+          />
+        </label>
+      </div>
+      <div
+        className="sc-gzVnrw dnKKOo"
+        value="My depense"
+      >
+        <label
+          className="sc-bwzfXH cJnpOh"
+        >
+          <span>
+            Name
+          </span>
+          <input
+            className="sc-EHOje LArJT"
+            onChange={[Function]}
+            type="text"
+            value="My depense"
+          />
+        </label>
+      </div>
+      <div
+        className="sc-iwsKbI LIYKF"
+        color="primary"
+      >
+        <label
+          className="sc-bwzfXH cJnpOh"
+        >
+          <span>
+            Category
+          </span>
+          <select
+            className="sc-htoDjs diwrEM"
+            color="primary"
+            onChange={[Function]}
+          >
+            <option>
+              Restauration
+            </option>
+            <option>
+              Taxis
+            </option>
+          </select>
+        </label>
+      </div>
+      <br />
+      <button
+        className="sc-gZMcBi iltjcH sc-gqjmRU jMfTvD"
+        onClick={[Function]}
+      >
+        Ajouter
+      </button>
+    </form>
+  </div>
+</div>
 `;

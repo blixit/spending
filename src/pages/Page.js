@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ErrorBoundary from 'core/ErrorBoundary';
+import ErrorBoundary from 'ui/structure/boundary/ErrorBoundary';
 
 const StyledPage = styled.div`
   position: fixed;
@@ -11,8 +11,8 @@ const StyledPage = styled.div`
   right: 0;
   overflow-y: auto;
   width: 100%;
-  background: ${({ theme }) => theme.fourth() };
-  color: ${({ theme }) => theme.primary() };
+  background: ${({ theme }) => theme.fourth()};
+  color: ${({ theme }) => theme.primary()};
   font-size: 14px;
 `;
 

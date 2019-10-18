@@ -154,7 +154,7 @@ exports[`[components/forms/filter-form] FilterForm should render properly 1`] = 
   </div>
   <br />
   <button
-    className="sc-bwzfXH cuSBsa sc-htpNat knmdAQ"
+    className="sc-bdVaJa cbeqcr sc-bwzfXH eydXok"
     onClick={[Function]}
   >
     Filtrer

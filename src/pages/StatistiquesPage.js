@@ -11,9 +11,9 @@ import {
 } from 'victory';
 
 
-import { Get, ReadyQueries as Queries, mutate } from 'core/http/query';
+import { ReadyQueries as Queries, mutate } from 'core/http/query';
+import { hydrate, use } from 'core/hocs/query-wrapper';
 
-// import ThemedButton from 'components/atoms/buttons/ThemedButton';
 import ChartFilterForm from 'components/forms/ChartFilterForm';
 
 import PageComponent from 'pages/Page';
@@ -34,9 +34,7 @@ const chartStyle = {
 };
 
 const Bar = styled(BarComponent)`
-  fill: ${({ datum }) => {
-    return datum.price > 0 ? 'green' : 'red';
-  }} !important;
+  fill: ${({ datum }) => datum.price > 0 ? 'green' : 'red'} !important;
 `;
 
 const StyledFilterForm = styled(ChartFilterForm)`
@@ -44,27 +42,20 @@ const StyledFilterForm = styled(ChartFilterForm)`
   margin-bottom: 10px;
 `;
 
-const StatistiquesPage = (props) => {
-  const [items, setItems] = useState([]);
+const prepareItems = items =>
+  items.map(x => ({ ...x, price: Number(x.price)})).reverse();
 
-  const prepareItems = useCallback((items) => {
-    return items.map(x => ({ ...x, price: Number(x.price)})).reverse();
-  }, []);
+export const StatistiquesPage = props => {
+  const [items, setItems] = useState(props.items ? prepareItems(props.items.data.data) : []);
 
   const onRefresh = useCallback( ({ data: { data: retults } }) => {
     setItems(prepareItems(retults));
-  }, [prepareItems]);
+  }, []);
 
   const { latests } = Queries.spending;
-
+  
   return (
     <Page {...props}>
-      <Get
-        {...Queries.test}
-        children={({ data: { data: retults } }) =>
-          setItems(prepareItems(retults))
-        }
-      />
       <StyledFilterForm
         onRefresh={onRefresh}
         refreshQuery={body => mutate({ ...latests, data: body })}
@@ -113,4 +104,7 @@ const StatistiquesPage = (props) => {
   );
 };
 
-export default StatistiquesPage;
+export default hydrate(
+  StatistiquesPage,
+  use(Queries.spending.latests, 'items')
+);

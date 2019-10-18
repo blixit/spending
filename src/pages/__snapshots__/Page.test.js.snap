@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`[pages] Pages should render properly 1`] = `
-<h1>
-  Something went wrong.
-</h1>
+<div
+  className="sc-bdVaJa kjZkLq"
+>
+  <div
+    className="sc-bwzfXH gouoTZ"
+  >
+    Test
+  </div>
+</div>
 `;

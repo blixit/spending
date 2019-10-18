@@ -5,10 +5,10 @@ exports[`[components/forms/filter-form] NewSpendingForm should render properly 1
   className="sc-jTzLTM iNxaQE"
 >
   <div
-    className="sc-EHOje kITCay"
+    className="sc-ifAKCX bQstZT"
   >
     <label
-      className="sc-htpNat efjqaz sc-ifAKCX ILRZa"
+      className="sc-bwzfXH cJnpOh sc-bxivhb jqRqDB"
     >
       <span>
         Date
@@ -20,7 +20,7 @@ exports[`[components/forms/filter-form] NewSpendingForm should render properly 1
           className="react-datepicker__input-container"
         >
           <input
-            className="sc-bwzfXH gmhCOd"
+            className="sc-bdVaJa fEZIYW"
             disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
@@ -37,18 +37,18 @@ exports[`[components/forms/filter-form] NewSpendingForm should render properly 1
     </label>
   </div>
   <div
-    className="sc-htoDjs ldtBBx"
+    className="sc-gzVnrw dnKKOo"
     placeholder="Ex: -45 for -45€"
     value={null}
   >
     <label
-      className="sc-htpNat efjqaz"
+      className="sc-bwzfXH cJnpOh"
     >
       <span>
         Amount
       </span>
       <input
-        className="sc-bZQynM kapAWO"
+        className="sc-EHOje LArJT"
         onChange={[Function]}
         placeholder="Ex: -45 for -45€"
         type="number"
@@ -57,17 +57,17 @@ exports[`[components/forms/filter-form] NewSpendingForm should render properly 1
     </label>
   </div>
   <div
-    className="sc-htoDjs ldtBBx"
+    className="sc-gzVnrw dnKKOo"
     value="My depense"
   >
     <label
-      className="sc-htpNat efjqaz"
+      className="sc-bwzfXH cJnpOh"
     >
       <span>
         Name
       </span>
       <input
-        className="sc-bZQynM kapAWO"
+        className="sc-EHOje LArJT"
         onChange={[Function]}
         type="text"
         value="My depense"
@@ -75,17 +75,17 @@ exports[`[components/forms/filter-form] NewSpendingForm should render properly 1
     </label>
   </div>
   <div
-    className="sc-gZMcBi ihvTbp"
+    className="sc-iwsKbI LIYKF"
     color="primary"
   >
     <label
-      className="sc-htpNat efjqaz"
+      className="sc-bwzfXH cJnpOh"
     >
       <span>
         Category
       </span>
       <select
-        className="sc-dnqmqq hbLfuS"
+        className="sc-htoDjs diwrEM"
         color="primary"
         onChange={[Function]}
       >
@@ -100,7 +100,7 @@ exports[`[components/forms/filter-form] NewSpendingForm should render properly 1
   </div>
   <br />
   <button
-    className="sc-gqjmRU eZsPkf sc-VigVT giqWvu"
+    className="sc-gZMcBi iltjcH sc-gqjmRU jMfTvD"
     onClick={[Function]}
   >
     Ajouter
