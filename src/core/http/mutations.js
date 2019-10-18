@@ -5,6 +5,13 @@ const MutationsConfiguration = config => {
   const url = base || API.base;
 
   return {
+    auth: {
+      login: {
+        url: url + '/auth/login',
+        queryError: 'Login failed. Please check your credentials or retry later',
+        method: 'post'
+      }
+    },
     spending: {
       search: {
         url: url + '/spending/search',

@@ -10,6 +10,8 @@ install:
 
 script:
   - npm run test
+  - rm -f src/package.alias.json
+  - cd src; ln -s ../package.json package.alias.json; cd ..
   - npm run build
 
 deploy:

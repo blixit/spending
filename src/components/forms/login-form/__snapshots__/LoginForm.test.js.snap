@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[components/forms/filter-form] LoginForm should render properly 1`] = `
+<div
+  className="sc-dnqmqq iSJnfr"
+>
+  <h1
+    className="sc-gzVnrw dOEsii"
+  >
+    Your workspace
+  </h1>
+  <div
+    className="sc-EHOje kITCay"
+    placeholder="Enter your login"
+    value={null}
+  >
+    <label
+      className="sc-bxivhb RKnZz"
+    >
+      <span>
+        Login
+      </span>
+      <input
+        className="sc-htpNat cjvsVh"
+        onChange={[Function]}
+        placeholder="Enter your login"
+        type="text"
+        value={null}
+      />
+    </label>
+  </div>
+  <div
+    className="sc-EHOje kITCay"
+    placeholder="Enter your password"
+    value={null}
+  >
+    <label
+      className="sc-bxivhb RKnZz"
+    >
+      <span>
+        Password
+      </span>
+      <input
+        className="sc-htpNat cjvsVh"
+        onChange={[Function]}
+        placeholder="Enter your password"
+        type="password"
+        value={null}
+      />
+    </label>
+  </div>
+  <div
+    className="sc-htoDjs hyjxGL"
+  >
+    <button
+      className="sc-bdVaJa cbeqcr sc-bwzfXH eydXok"
+      onClick={[Function]}
+    >
+      Log in
+    </button>
+  </div>
+</div>
+`;

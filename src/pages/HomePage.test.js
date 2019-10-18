@@ -1,3 +1,4 @@
+import 'jest-localstorage-mock';
 import { act } from 'react-test-renderer';
 
 import render from 'testing/render';

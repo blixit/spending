@@ -23,7 +23,7 @@ export const use = (query, as) => ({ query, as });
  * HOC that hydrates the given component with the query
  * @param {object} props 
  */
-const Hydrater = ({ component, as, query }) => {
+const Hydrater = ({ component, as, query, ...rest }) => {
   /** The context we use to store the queries */
   const context = useContext(QueriesContext);
 
@@ -84,7 +84,7 @@ const Hydrater = ({ component, as, query }) => {
 
   return (
     <>
-      {data && <Child {...mergedProps()} />}
+      {data && <Child {...rest} {...mergedProps()} />}
       {error && <Error />}
     </>
   );
