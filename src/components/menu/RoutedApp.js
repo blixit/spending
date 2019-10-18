@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Page from 'pages/Page';
-import NewSpendingPage from 'pages/new-spending-page/NewSpendingPage';
+import NewSpendingPage from 'pages/NewSpendingPage';
 import HomePage from 'pages/HomePage';
 import StatistiquesPage from 'pages/StatistiquesPage';
 

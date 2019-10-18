@@ -1,6 +1,6 @@
 import API from './api-settings';
 
-const MutationsConfiguration = (config) => {
+const MutationsConfiguration = config => {
   const { base } = config || {};
   const url = base || API.base;
 

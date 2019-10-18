@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[components/forms/filter-form] NewSpendingForm should render properly 1`] = `
+<form
+  className="sc-jTzLTM iNxaQE"
+>
+  <div
+    className="sc-EHOje kITCay"
+  >
+    <label
+      className="sc-htpNat efjqaz sc-ifAKCX ILRZa"
+    >
+      <span>
+        Date
+      </span>
+      <div
+        className="react-datepicker-wrapper"
+      >
+        <div
+          className="react-datepicker__input-container"
+        >
+          <input
+            className="sc-bwzfXH gmhCOd"
+            disabled={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            placeholder="select a date"
+            readOnly={false}
+            type="text"
+            value="18/10/2019"
+          />
+        </div>
+      </div>
+    </label>
+  </div>
+  <div
+    className="sc-htoDjs ldtBBx"
+    placeholder="Ex: -45 for -45€"
+    value={null}
+  >
+    <label
+      className="sc-htpNat efjqaz"
+    >
+      <span>
+        Amount
+      </span>
+      <input
+        className="sc-bZQynM kapAWO"
+        onChange={[Function]}
+        placeholder="Ex: -45 for -45€"
+        type="number"
+        value={null}
+      />
+    </label>
+  </div>
+  <div
+    className="sc-htoDjs ldtBBx"
+    value="My depense"
+  >
+    <label
+      className="sc-htpNat efjqaz"
+    >
+      <span>
+        Name
+      </span>
+      <input
+        className="sc-bZQynM kapAWO"
+        onChange={[Function]}
+        type="text"
+        value="My depense"
+      />
+    </label>
+  </div>
+  <div
+    className="sc-gZMcBi ihvTbp"
+    color="primary"
+  >
+    <label
+      className="sc-htpNat efjqaz"
+    >
+      <span>
+        Category
+      </span>
+      <select
+        className="sc-dnqmqq hbLfuS"
+        color="primary"
+        onChange={[Function]}
+      >
+        <option>
+          Restauration
+        </option>
+        <option>
+          Taxis
+        </option>
+      </select>
+    </label>
+  </div>
+  <br />
+  <button
+    className="sc-gqjmRU eZsPkf sc-VigVT giqWvu"
+    onClick={[Function]}
+  >
+    Ajouter
+  </button>
+</form>
+`;

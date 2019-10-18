@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[pages] HomePage should render properly 1`] = `
+<div
+  className="sc-ckVGcZ jbCulJ sc-hMqMXs bYupWY"
+>
+  <div
+    className="sc-jKJlTe hvKJPV"
+  >
+    <button
+      className="sc-bZQynM hGfsCj sc-gzVnrw fIeHAv sc-htoDjs eFJrQB sc-eNQAEJ ipBAUA"
+      onClick={[Function]}
+    >
+      <svg
+        color="white"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+        viewBox="0 0 512 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+        />
+      </svg>
+    </button>
+    <span
+      className="sc-kkGfuU kWebY"
+    >
+      Your depenses:
+    </span>
+    <div>
+      <div
+        className="sc-ifAKCX ddPLTk"
+      >
+        <div>
+          <span
+            className="sc-bdVaJa fePDys"
+          >
+            My depense
+          </span>
+          <br />
+          <span
+            className="sc-bwzfXH eYuQBz"
+          >
+            25/09/2019 21:38:53
+          </span>
+        </div>
+        <div
+          className="sc-bxivhb jtHuoG"
+        >
+          <span
+            className="sc-htpNat eSrccS"
+          >
+            45
+             €
+          </span>
+          <svg
+            className="sc-EHOje bvPvHy"
+            fill="currentColor"
+            height="1em"
+            onClick={[Function]}
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 448 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

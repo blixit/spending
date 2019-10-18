@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[forms/form-selector] FormSelector renders properly 1`] = `
+<div
+  className="sc-bxivhb kKnJWp"
+>
+  <label
+    className="sc-bwzfXH cJnpOh"
+  >
+    <span>
+      Label
+    </span>
+    <select
+      className="sc-bdVaJa kNYkjY"
+      onChange={[MockFunction]}
+    >
+      <option>
+        item 1
+      </option>
+    </select>
+  </label>
+</div>
+`;

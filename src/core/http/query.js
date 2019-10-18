@@ -19,13 +19,11 @@ export const Mutations = config => MutationsConfiguration(config);
 export const ReadyMutations = (_ => MutationsConfiguration())();
 
 class Query extends React.Component {
-  state = {
-    onError: false 
-  };
+  state = { onError: false };
 
-  constructor(props) {
-    super(props);
-    const { sync } = props;
+  componentDidMount() {
+    this._isMounted = true;
+    const { sync } = this.props;
 
     if (sync) {
       this.synchronizedQuery();
@@ -52,14 +50,16 @@ class Query extends React.Component {
     }
   }
 
-  then = (response) => {
-    const { children } = this.props;
-    children(response);
+  then = response => {
+    const { children, onResult } = this.props;
+    if (onResult) {
+      onResult(response);
+    } else {
+      children(response);
+    }
   }
 
-  catch = (response) => {
-    this.setState({ response, onError: true });
-  };
+  catch = response => this.setState({ response, onError: true });
 
   renderError = () => {
     const { response } = this.state;
@@ -75,15 +75,14 @@ class Query extends React.Component {
 
     const Error = this.renderError;
 
-    return (
-      <React.Fragment>
-        {onError && <Error />}
-      </React.Fragment>
-    )
+    return onError && <Error />;
   }
 }
 
-export const Get = ({ children, ...rest }) =>
-  <Query {...rest} method='get' >{children}</Query>;
+export const Get = ({ children, ...rest }) => {
+  return (
+    <Query {...rest} method='get' >{children}</Query>
+  );
+};
 
 export default Query;

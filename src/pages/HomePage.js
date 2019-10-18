@@ -1,131 +1,111 @@
 import React from 'react';
 import styled from 'styled-components';
-import trigger from 'vanillajs-browser-helpers/trigger';
-import { FaTrash } from 'react-icons/fa';
 
-import ThemedButton from 'components/atoms/buttons/ThemedButton';
+import { EventContext } from 'core/events/provider';
+
+import IconButtonUI from 'ui/atoms/buttons/IconButton';
 import FilterForm from 'components/forms/filter-form/FilterForm';
+import VerticalList from 'ui/collection/vertical-list/VerticalList';
+import SpendingListItem from 'components/items/spending-list-item/SpendingListItem';
 
 import {
-  Get,
   ReadyQueries as Queries,
   mutate,
-  ReadyMutations as Mutations
+  ReadyMutations as Mutations,
 } from 'core/http/query';
+import { hydrate, use } from 'core/hocs/query-wrapper';
 
 import PageComponent from 'pages/Page';
+
+const IconButton = styled(IconButtonUI)`
+  width: 24px;
+`;
 
 const Page = styled(PageComponent)`
   flex-direction: column;
 `;
 
-const Label = styled.span`
-  font-size: 1.3em;
-`;
-
-const Price = styled.span`
-  font-size: 1.215em;
-`;
-
-const Item = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 1.2em;
-  border-bottom: 1px solid silver;
-`;
-
 const StyledFilterForm = styled(FilterForm)`
-  margin-top: ${({ showFilter }) => showFilter ? '20px' : 0 };
-  margin-bottom: 20px;
+  margin-top: ${({ showFilter }) => showFilter ? '5px' : 0 };
 `;
 
-const Trash = styled(FaTrash)`
-  margin-left: 10px;
-  cursor: ${({ onClick }) => onClick ? 'pointer' : 'default' };
+const ListTitle = styled.span`
+  font-weight: bold;
+  padding-top: 10px;
 `;
 
-class HomePage extends React.Component {
+export class HomePage extends React.Component {
   static displayName = 'HomePage';
 
-  state = {
-    showFilter: false,
-    items: []
-  };
+  static contextType = EventContext;
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showFilter: false,
+      items: props.items ? props.items.data.data : []
+    };
+  }
 
   toggleFilter = () => {
     const { showFilter } = this.state;
     this.setState({ showFilter: !showFilter });
   };
 
-  formatDate = (date) => {
-    const toFormat = new Date(date);
-    return toFormat.toLocaleString();
-  };
-
-  onTrashClicked = ({ id }) => {
+  onRemoveItem = ({ id }) => {
     const { items } = this.state;
+    const { eventManager } = this.context;
     const { remove } = Mutations.spending;
+
     mutate({ ...remove, data: {
       id
     }}).then(data => {
       const filtered = items.filter(item => item.id !== id);
       this.setState({ items: filtered });
-      trigger(document, 'refresh:balance', data);
+      eventManager.emit('refresh:balance', data);
     }).catch(error => {
       console.error(error);
     });
   };
 
-  renderItem = (item) => {
-    const { id, label, date, price } = item;
-    return (
-      <Item key={`${id}`}>
-        <div>
-          <Label>{label}</Label><br />
-          <span>{this.formatDate(date)}</span>
-        </div>
-        <div>
-          <Price>{price} €</Price>
-          <Trash onClick={() => this.onTrashClicked(item)} />
-        </div>
-      </Item>
-    );
-  };
-
-  renderItems = (data) => {
-    return (data || []).map(
-      (item) => this.renderItem(item)
-    );
-  };
-
-  updateItems = ({ status, data: { data: items } }) => {
+  updateItems = ({ status, data: { data: items } }) =>
     this.setState({ items });
-  };
+
+  renderItem = (item, key) => (
+    <SpendingListItem
+      item={item}
+      key={key}
+      onDelete={this.onRemoveItem}
+    />
+  );
 
   render () {
     const { showFilter, items } = this.state;
     const { ...rest } = this.props;
+    const icon = {
+      type: showFilter ? 'times' : 'filter',
+      color: 'white'
+    };
 
     return (
       <Page {...rest}>
-        <React.Fragment>
-          <ThemedButton color='primary' onClick={this.toggleFilter}>Recherche avancée</ThemedButton>
-          {showFilter && <StyledFilterForm
-            showFilter={showFilter}
-            onFormResult={this.updateItems}
-          />}
-        </React.Fragment>
-
-        <Get
-          {...Queries.test}
-          children={this.updateItems}
+        <IconButton icon={icon} bgcolor='primary' onClick={this.toggleFilter}>Recherche avancée</IconButton>
+        {showFilter && <StyledFilterForm
+          showFilter={showFilter}
+          onFormResult={this.updateItems}
+        />}
+        <ListTitle>Your depenses:</ListTitle>
+        <VerticalList
+          items={items}
+          renderItem={this.renderItem}
         />
-        {this.renderItems(items)}
       </Page>
     );
   }
 }
 
-export default HomePage;
+export default hydrate(
+  HomePage,
+  use(Queries.test, 'items')
+);

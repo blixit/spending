@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Selector from 'components/inputs/selector/Selector';
+import Selector from 'ui/inputs/selector/Selector';
 
 const Block = styled.div`
   display: flex;
@@ -12,19 +12,18 @@ const Block = styled.div`
 `;
 
 class ChartFilterForm extends React.Component {
-
   state = {
     timeScale: 'Day'
   };
 
   temporalFilters = [
-    'All',
-    'Year',
-    'Semester',
-    'Quarter',
-    'Month',
-    'Week',
-    'Day',
+    { id: 1, option: 'All' },
+    { id: 2, option: 'Year' },
+    { id: 3, option: 'Semester' },
+    { id: 4, option: 'Quarter' },
+    { id: 5, option: 'Month' },
+    { id: 6, option: 'Week' },
+    { id: 7, option: 'Day' }
   ];
 
   onTimeScaleChanged = async (e) => {
