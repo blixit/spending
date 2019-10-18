@@ -1,7 +1,851 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`[pages] StatistiquesPage should render properly 1`] = `
-<h1>
-  Something went wrong.
-</h1>
+<div
+  className="sc-bxivhb iRmtXl sc-EHOje fdwtkd"
+>
+  <div
+    className="sc-ifAKCX ibQEvV"
+  >
+    <div
+      className="sc-htpNat ccWAKW"
+    >
+      Echelle de temps
+      <select
+        className="sc-bwzfXH bhKFKH"
+        color="primary"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "80%",
+          }
+        }
+        value="Day"
+      >
+        <option>
+          All
+        </option>
+        <option>
+          Year
+        </option>
+        <option>
+          Semester
+        </option>
+        <option>
+          Quarter
+        </option>
+        <option>
+          Month
+        </option>
+        <option>
+          Week
+        </option>
+        <option>
+          Day
+        </option>
+      </select>
+    </div>
+    <div
+      className="sc-bZQynM vtJXC"
+      style={
+        Object {
+          "border": "1px solid #ccc",
+          "height": "100%",
+          "marginTop": "20px",
+          "pointerEvents": "none",
+          "position": "relative",
+          "touchAction": "none",
+          "userSelect": "none",
+          "width": "100%",
+        }
+      }
+    >
+      <svg
+        height={350}
+        onMouseLeave={[Function]}
+        onMouseMove={[Function]}
+        onTouchCancel={[Function]}
+        onTouchMove={[Function]}
+        role="img"
+        style={
+          Object {
+            "height": "auto",
+            "pointerEvents": "all",
+            "width": "100%",
+          }
+        }
+        viewBox="0 0 350 350"
+        width={350}
+      >
+        <g
+          role="presentation"
+        >
+          <line
+            role="presentation"
+            shapeRendering="auto"
+            style={
+              Object {
+                "fill": "transparent",
+                "stroke": "#90A4AE",
+                "strokeLinecap": "round",
+                "strokeLinejoin": "round",
+                "strokeWidth": 2,
+              }
+            }
+            vectorEffect="non-scaling-stroke"
+            x1={50}
+            x2={50}
+            y1={50}
+            y2={300}
+          />
+          <g
+            role="presentation"
+          >
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "none",
+                  "pointerEvents": "painted",
+                  "stroke": "#ECEFF1",
+                  "strokeDasharray": "10, 5",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={50}
+              x2={300}
+              y1={253.97643593519882}
+              y2={253.97643593519882}
+            />
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "transparent",
+                  "size": 5,
+                  "stroke": "#90A4AE",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeWidth": 1,
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={50}
+              x2={45}
+              y1={253.97643593519882}
+              y2={253.97643593519882}
+            />
+            <text
+              direction="inherit"
+              dx={0}
+              dy={4.26}
+              id="chart-axis-0-tickLabels-0"
+              x={37}
+              y={253.97643593519882}
+            >
+              <tspan
+                dx={0}
+                style={
+                  Object {
+                    "fill": "#455A64",
+                    "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                    "fontSize": 12,
+                    "letterSpacing": "normal",
+                    "padding": 8,
+                    "stroke": "transparent",
+                    "strokeWidth": 0,
+                  }
+                }
+                textAnchor="end"
+                x={37}
+              >
+                0.2
+              </tspan>
+            </text>
+          </g>
+          <g
+            role="presentation"
+          >
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "none",
+                  "pointerEvents": "painted",
+                  "stroke": "#ECEFF1",
+                  "strokeDasharray": "10, 5",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={50}
+              x2={300}
+              y1={207.95287187039764}
+              y2={207.95287187039764}
+            />
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "transparent",
+                  "size": 5,
+                  "stroke": "#90A4AE",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeWidth": 1,
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={50}
+              x2={45}
+              y1={207.95287187039764}
+              y2={207.95287187039764}
+            />
+            <text
+              direction="inherit"
+              dx={0}
+              dy={4.26}
+              id="chart-axis-0-tickLabels-1"
+              x={37}
+              y={207.95287187039764}
+            >
+              <tspan
+                dx={0}
+                style={
+                  Object {
+                    "fill": "#455A64",
+                    "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                    "fontSize": 12,
+                    "letterSpacing": "normal",
+                    "padding": 8,
+                    "stroke": "transparent",
+                    "strokeWidth": 0,
+                  }
+                }
+                textAnchor="end"
+                x={37}
+              >
+                0.4
+              </tspan>
+            </text>
+          </g>
+          <g
+            role="presentation"
+          >
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "none",
+                  "pointerEvents": "painted",
+                  "stroke": "#ECEFF1",
+                  "strokeDasharray": "10, 5",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={50}
+              x2={300}
+              y1={161.9293078055965}
+              y2={161.9293078055965}
+            />
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "transparent",
+                  "size": 5,
+                  "stroke": "#90A4AE",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeWidth": 1,
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={50}
+              x2={45}
+              y1={161.9293078055965}
+              y2={161.9293078055965}
+            />
+            <text
+              direction="inherit"
+              dx={0}
+              dy={4.26}
+              id="chart-axis-0-tickLabels-2"
+              x={37}
+              y={161.9293078055965}
+            >
+              <tspan
+                dx={0}
+                style={
+                  Object {
+                    "fill": "#455A64",
+                    "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                    "fontSize": 12,
+                    "letterSpacing": "normal",
+                    "padding": 8,
+                    "stroke": "transparent",
+                    "strokeWidth": 0,
+                  }
+                }
+                textAnchor="end"
+                x={37}
+              >
+                0.6
+              </tspan>
+            </text>
+          </g>
+          <g
+            role="presentation"
+          >
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "none",
+                  "pointerEvents": "painted",
+                  "stroke": "#ECEFF1",
+                  "strokeDasharray": "10, 5",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={50}
+              x2={300}
+              y1={115.90574374079529}
+              y2={115.90574374079529}
+            />
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "transparent",
+                  "size": 5,
+                  "stroke": "#90A4AE",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeWidth": 1,
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={50}
+              x2={45}
+              y1={115.90574374079529}
+              y2={115.90574374079529}
+            />
+            <text
+              direction="inherit"
+              dx={0}
+              dy={4.26}
+              id="chart-axis-0-tickLabels-3"
+              x={37}
+              y={115.90574374079529}
+            >
+              <tspan
+                dx={0}
+                style={
+                  Object {
+                    "fill": "#455A64",
+                    "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                    "fontSize": 12,
+                    "letterSpacing": "normal",
+                    "padding": 8,
+                    "stroke": "transparent",
+                    "strokeWidth": 0,
+                  }
+                }
+                textAnchor="end"
+                x={37}
+              >
+                0.8
+              </tspan>
+            </text>
+          </g>
+          <g
+            role="presentation"
+          >
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "none",
+                  "pointerEvents": "painted",
+                  "stroke": "#ECEFF1",
+                  "strokeDasharray": "10, 5",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={50}
+              x2={300}
+              y1={69.88217967599411}
+              y2={69.88217967599411}
+            />
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "transparent",
+                  "size": 5,
+                  "stroke": "#90A4AE",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeWidth": 1,
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={50}
+              x2={45}
+              y1={69.88217967599411}
+              y2={69.88217967599411}
+            />
+            <text
+              direction="inherit"
+              dx={0}
+              dy={4.26}
+              id="chart-axis-0-tickLabels-4"
+              x={37}
+              y={69.88217967599411}
+            >
+              <tspan
+                dx={0}
+                style={
+                  Object {
+                    "fill": "#455A64",
+                    "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                    "fontSize": 12,
+                    "letterSpacing": "normal",
+                    "padding": 8,
+                    "stroke": "transparent",
+                    "strokeWidth": 0,
+                  }
+                }
+                textAnchor="end"
+                x={37}
+              >
+                1.0
+              </tspan>
+            </text>
+          </g>
+        </g>
+        <g
+          role="presentation"
+        >
+          <line
+            role="presentation"
+            shapeRendering="auto"
+            style={
+              Object {
+                "fill": "transparent",
+                "stroke": "#756f6a",
+                "strokeLinecap": "round",
+                "strokeLinejoin": "round",
+                "strokeWidth": 2,
+              }
+            }
+            vectorEffect="non-scaling-stroke"
+            x1={50}
+            x2={300}
+            y1={300}
+            y2={300}
+          />
+          <g
+            role="presentation"
+          >
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "none",
+                  "pointerEvents": "painted",
+                  "stroke": "grey",
+                  "strokeDasharray": "10, 5",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={96.02356406480118}
+              x2={96.02356406480118}
+              y1={300}
+              y2={50}
+            />
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "transparent",
+                  "size": 5,
+                  "stroke": "grey",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeWidth": 1,
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={96.02356406480118}
+              x2={96.02356406480118}
+              y1={300}
+              y2={305}
+            />
+            <text
+              direction="inherit"
+              dx={20}
+              dy={21.84}
+              id="chart-axis-1-tickLabels-0"
+              transform="rotate(90,96.02356406480118,310)"
+              x={96.02356406480118}
+              y={310}
+            >
+              <tspan
+                dx={20}
+                style={
+                  Object {
+                    "fill": "#455A64",
+                    "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                    "fontSize": 8,
+                    "letterSpacing": "normal",
+                    "padding": 5,
+                    "stroke": "transparent",
+                    "strokeWidth": 0,
+                  }
+                }
+                textAnchor="middle"
+                x={96.02356406480118}
+              >
+                0.2
+              </tspan>
+            </text>
+          </g>
+          <g
+            role="presentation"
+          >
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "none",
+                  "pointerEvents": "painted",
+                  "stroke": "grey",
+                  "strokeDasharray": "10, 5",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={142.04712812960236}
+              x2={142.04712812960236}
+              y1={300}
+              y2={50}
+            />
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "transparent",
+                  "size": 5,
+                  "stroke": "grey",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeWidth": 1,
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={142.04712812960236}
+              x2={142.04712812960236}
+              y1={300}
+              y2={305}
+            />
+            <text
+              direction="inherit"
+              dx={20}
+              dy={21.84}
+              id="chart-axis-1-tickLabels-1"
+              transform="rotate(90,142.04712812960236,310)"
+              x={142.04712812960236}
+              y={310}
+            >
+              <tspan
+                dx={20}
+                style={
+                  Object {
+                    "fill": "#455A64",
+                    "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                    "fontSize": 8,
+                    "letterSpacing": "normal",
+                    "padding": 5,
+                    "stroke": "transparent",
+                    "strokeWidth": 0,
+                  }
+                }
+                textAnchor="middle"
+                x={142.04712812960236}
+              >
+                0.4
+              </tspan>
+            </text>
+          </g>
+          <g
+            role="presentation"
+          >
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "none",
+                  "pointerEvents": "painted",
+                  "stroke": "red",
+                  "strokeDasharray": "10, 5",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={188.0706921944035}
+              x2={188.0706921944035}
+              y1={300}
+              y2={50}
+            />
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "transparent",
+                  "size": 5,
+                  "stroke": "grey",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeWidth": 1,
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={188.0706921944035}
+              x2={188.0706921944035}
+              y1={300}
+              y2={305}
+            />
+            <text
+              direction="inherit"
+              dx={20}
+              dy={21.84}
+              id="chart-axis-1-tickLabels-2"
+              transform="rotate(90,188.0706921944035,310)"
+              x={188.0706921944035}
+              y={310}
+            >
+              <tspan
+                dx={20}
+                style={
+                  Object {
+                    "fill": "#455A64",
+                    "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                    "fontSize": 8,
+                    "letterSpacing": "normal",
+                    "padding": 5,
+                    "stroke": "transparent",
+                    "strokeWidth": 0,
+                  }
+                }
+                textAnchor="middle"
+                x={188.0706921944035}
+              >
+                0.6
+              </tspan>
+            </text>
+          </g>
+          <g
+            role="presentation"
+          >
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "none",
+                  "pointerEvents": "painted",
+                  "stroke": "red",
+                  "strokeDasharray": "10, 5",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={234.0942562592047}
+              x2={234.0942562592047}
+              y1={300}
+              y2={50}
+            />
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "transparent",
+                  "size": 5,
+                  "stroke": "grey",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeWidth": 1,
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={234.0942562592047}
+              x2={234.0942562592047}
+              y1={300}
+              y2={305}
+            />
+            <text
+              direction="inherit"
+              dx={20}
+              dy={21.84}
+              id="chart-axis-1-tickLabels-3"
+              transform="rotate(90,234.0942562592047,310)"
+              x={234.0942562592047}
+              y={310}
+            >
+              <tspan
+                dx={20}
+                style={
+                  Object {
+                    "fill": "#455A64",
+                    "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                    "fontSize": 8,
+                    "letterSpacing": "normal",
+                    "padding": 5,
+                    "stroke": "transparent",
+                    "strokeWidth": 0,
+                  }
+                }
+                textAnchor="middle"
+                x={234.0942562592047}
+              >
+                0.8
+              </tspan>
+            </text>
+          </g>
+          <g
+            role="presentation"
+          >
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "none",
+                  "pointerEvents": "painted",
+                  "stroke": "red",
+                  "strokeDasharray": "10, 5",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={280.1178203240059}
+              x2={280.1178203240059}
+              y1={300}
+              y2={50}
+            />
+            <line
+              role="presentation"
+              shapeRendering="auto"
+              style={
+                Object {
+                  "fill": "transparent",
+                  "size": 5,
+                  "stroke": "grey",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
+                  "strokeWidth": 1,
+                }
+              }
+              vectorEffect="non-scaling-stroke"
+              x1={280.1178203240059}
+              x2={280.1178203240059}
+              y1={300}
+              y2={305}
+            />
+            <text
+              direction="inherit"
+              dx={20}
+              dy={21.84}
+              id="chart-axis-1-tickLabels-4"
+              transform="rotate(90,280.1178203240059,310)"
+              x={280.1178203240059}
+              y={310}
+            >
+              <tspan
+                dx={20}
+                style={
+                  Object {
+                    "fill": "#455A64",
+                    "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+                    "fontSize": 8,
+                    "letterSpacing": "normal",
+                    "padding": 5,
+                    "stroke": "transparent",
+                    "strokeWidth": 0,
+                  }
+                }
+                textAnchor="middle"
+                x={280.1178203240059}
+              >
+                1.0
+              </tspan>
+            </text>
+          </g>
+        </g>
+        <g
+          role="presentation"
+        />
+      </svg>
+      <div
+        style={
+          Object {
+            "height": "auto",
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+            "zIndex": 99,
+          }
+        }
+      >
+        <svg
+          height={350}
+          style={
+            Object {
+              "height": "auto",
+              "overflow": "visible",
+              "width": "100%",
+            }
+          }
+          viewBox="0 0 350 350"
+          width={350}
+        />
+      </div>
+    </div>
+  </div>
+</div>
 `;

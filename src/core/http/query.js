@@ -1,10 +1,7 @@
-import React from 'react';
 import axios from 'axios';
 
 import QueriesConfiguration from './queries';
 import MutationsConfiguration from './mutations';
-
-import StyledError from 'components/molecules/error/Error';
 
 export const query = ({ method, url, data }) =>
   axios({ method: method || 'get', url, data });
@@ -17,72 +14,3 @@ export const ReadyQueries = (_ => QueriesConfiguration())();
 
 export const Mutations = config => MutationsConfiguration(config);
 export const ReadyMutations = (_ => MutationsConfiguration())();
-
-class Query extends React.Component {
-  state = { onError: false };
-
-  componentDidMount() {
-    this._isMounted = true;
-    const { sync } = this.props;
-
-    if (sync) {
-      this.synchronizedQuery();
-    } else {
-      this.asynchronizedQuery();
-    }
-  }
-
-  asynchronizedQuery = () => {
-    const { method, url } = this.props;
-    query({ method, url })
-      .then(this.then)
-      .catch(this.catch);
-  }
-
-  synchronizedQuery = async () => {
-    const { method, url } = this.props;
-
-    try {
-      const result = method && url && await query({ method, url });
-      this.then(result);
-    } catch (e) {
-      this.catch(e);
-    }
-  }
-
-  then = response => {
-    const { children, onResult } = this.props;
-    if (onResult) {
-      onResult(response);
-    } else {
-      children(response);
-    }
-  }
-
-  catch = response => this.setState({ response, onError: true });
-
-  renderError = () => {
-    const { response } = this.state;
-    const { queryError } = this.props;
-
-    return (
-      <StyledError>{queryError || response.message}</StyledError>
-    );
-  }
-
-  render() {
-    const { onError } = this.state;
-
-    const Error = this.renderError;
-
-    return onError && <Error />;
-  }
-}
-
-export const Get = ({ children, ...rest }) => {
-  return (
-    <Query {...rest} method='get' >{children}</Query>
-  );
-};
-
-export default Query;
