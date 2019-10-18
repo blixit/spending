@@ -4,7 +4,9 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import fr from 'date-fns/locale/fr'; // the locale you want
 
-registerLocale('fr', fr); // register it with the name you want
+import { locale } from 'utils/date';
+
+registerLocale(locale, fr); // register it with the name you want
 
 /**
  * https://github.com/Hacker0x01/react-datepicker/issues/635
@@ -54,7 +56,7 @@ const DatePickerComponent = props => {
   return (
     <StyledDatePicker
       dateFormat="dd/MM/yyyy"
-      locale='fr'
+      locale={locale}
       showPopperArrow={false}
       placeholderText={placeholderText || 'select a date'}
       popperPlacement={arabic ? 'bottom-end' : 'bottom-start'}

@@ -14,7 +14,7 @@ describe('[utils] date', () => {
       new Date(Date.UTC(96, 1, 2, 3, 4, 5))
     ])('should return the formatted date', (date) => {
       const formatted = toBackendDate(date);
-      expect(formatted).toBe('1996-02-02 03:04:05');
+      expect(formatted).toBe('02/02/1996 03:04:05');
     });
   });
   describe('strToDatetime', () => {
@@ -22,7 +22,7 @@ describe('[utils] date', () => {
       '1996-02-02T23:38:53+02:00',
     ])('should return the formatted date for the user', (date) => {
       const formatted = strToDatetime(date);
-      expect(formatted).toBe('1996-02-02 21:38:53');
+      expect(formatted).toBe('02/02/1996 21:38:53');
     });
   });
 });
