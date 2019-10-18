@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import ErrorBoundary from 'ui/structure/boundary/ErrorBoundary';
+import { readCache } from 'core/storage/cache';
 
 const StyledPage = styled.div`
   position: fixed;
@@ -22,12 +23,27 @@ const Wrapper = styled.div`
   padding: 20px;
 `;
 
-export default (props) => {
-  const { children, ...rest} = props;
+export default props => {
+  const { router, children, ...rest } = props;
+  const [canRender, setCanRender] = useState(false);
+  useEffect(() => {
+    const user = readCache('user');
+    if (!user && router && router.location.pathname !== '/login') {
+      const { history } = router;
+      
+      // redirect to home
+      history.push('/login');
+      console.log('redirect to login');
+      
+      return;
+    }
+
+    setCanRender(true);
+  }, [router]);
   return (
     <ErrorBoundary>
       <StyledPage {...rest}>
-        <Wrapper>{children}</Wrapper>
+        {canRender && <Wrapper>{children}</Wrapper>}
       </StyledPage>
     </ErrorBoundary>
   );

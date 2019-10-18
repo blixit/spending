@@ -1,3 +1,5 @@
+import 'jest-localstorage-mock';
+
 import { withTheme } from 'ui/theming/test.utils';
 
 import render from 'testing/render';

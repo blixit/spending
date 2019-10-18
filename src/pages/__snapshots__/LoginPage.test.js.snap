@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[pages] LoginPage should render properly 1`] = `
+<div
+  className="sc-bdVaJa kjZkLq sc-gqjmRU biifNA"
+>
+  <div
+    className="sc-bwzfXH gouoTZ"
+  >
+    <div
+      className="sc-gZMcBi llcwPd"
+    >
+      <h1
+        className="sc-dnqmqq leIyVc"
+      >
+        Your workspace
+      </h1>
+      <div
+        className="sc-gzVnrw dnKKOo"
+        placeholder="Enter your login"
+        value={null}
+      >
+        <label
+          className="sc-EHOje fnacYO"
+        >
+          <span>
+            Login
+          </span>
+          <input
+            className="sc-ifAKCX jnltQ"
+            onChange={[Function]}
+            placeholder="Enter your login"
+            type="text"
+            value={null}
+          />
+        </label>
+      </div>
+      <div
+        className="sc-gzVnrw dnKKOo"
+        placeholder="Enter your password"
+        value={null}
+      >
+        <label
+          className="sc-EHOje fnacYO"
+        >
+          <span>
+            Password
+          </span>
+          <input
+            className="sc-ifAKCX jnltQ"
+            onChange={[Function]}
+            placeholder="Enter your password"
+            type="password"
+            value={null}
+          />
+        </label>
+      </div>
+      <div
+        className="sc-iwsKbI kSxtwv"
+      >
+        <button
+          className="sc-htpNat kqiJpG sc-bxivhb iXvLMe"
+          onClick={[Function]}
+        >
+          Log in
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

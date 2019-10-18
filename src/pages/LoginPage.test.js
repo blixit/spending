@@ -4,11 +4,11 @@ import { withTheme } from 'ui/theming/test.utils';
 
 import render from 'testing/render';
 
-import NewSpendingPage from './NewSpendingPage';
+import { LoginPage } from './LoginPage';
 
-describe('[pages] NewSpendingPage', () => {
+describe('[pages] LoginPage', () => {
   it('should render properly', () => {
-    const tree = render(withTheme(NewSpendingPage, { children: 'Test'}));
+    const tree = render(withTheme(LoginPage));
     expect(tree.toJSON()).toMatchSnapshot();
   });
 });

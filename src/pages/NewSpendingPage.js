@@ -9,7 +9,7 @@ class NewSpendingPage extends React.Component {
 
   render () {
     return (
-      <Page>
+      <Page {...this.props}>
         <NewSpendingForm />
       </Page>
     );

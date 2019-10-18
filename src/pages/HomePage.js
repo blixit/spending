@@ -82,14 +82,14 @@ export class HomePage extends React.Component {
 
   render () {
     const { showFilter, items } = this.state;
-    const { ...rest } = this.props;
+    
     const icon = {
       type: showFilter ? 'times' : 'filter',
       color: 'white'
     };
 
     return (
-      <Page {...rest}>
+      <Page {...this.props}>
         <IconButton icon={icon} bgcolor='primary' onClick={this.toggleFilter}>Recherche avancée</IconButton>
         {showFilter && <StyledFilterForm
           showFilter={showFilter}

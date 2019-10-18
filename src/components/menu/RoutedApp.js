@@ -5,30 +5,26 @@ import Page from 'pages/Page';
 import NewSpendingPage from 'pages/NewSpendingPage';
 import HomePage from 'pages/HomePage';
 import StatistiquesPage from 'pages/StatistiquesPage';
+import LoginPage from 'pages/LoginPage';
 
 import Header from './Header';
 import RoutedMenu from './RoutedMenu';
 
+const pages = {
+  new: { content: props => <NewSpendingPage {...props} /> },
+  statistiques: { content: props => <StatistiquesPage {...props} /> },
+  login: { content: props => <LoginPage {...props} /> },
+  admin: { content: props => null },
+  default: { content: props => <HomePage {...props} /> },
+};
+
 class RoutedApp extends React.Component {
-  handleMenuLink = ({ match }) => {
+  renderer = props => {
+    const { match } = props;
     const { params: { path } } = match;
-    let content = null;
+    const { content } = pages[path] || pages.default;
 
-    switch (path) {
-      case 'new':
-        content = <NewSpendingPage />;
-        break;
-      case 'statistiques':
-        content = <StatistiquesPage />;
-        break;
-      case 'admin':
-        break;
-      default:
-        content = <HomePage />;
-        break;
-    }
-
-    return content;
+    return content({ router: props });
   }
 
   render () {
@@ -37,8 +33,8 @@ class RoutedApp extends React.Component {
         <React.Fragment>
           <Header />
           <Page>
-            <Route exact path='/' component={this.handleMenuLink} />
-            <Route path='/:path' component={this.handleMenuLink} />
+            <Route exact path='/' render={this.renderer} />
+            <Route path='/:path' render={this.renderer} />
           </Page>
           <RoutedMenu />
         </React.Fragment>
