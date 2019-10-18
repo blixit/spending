@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 
-import Query from 'core/http/query';
+import { query as doQuery } from 'core/http/query';
 
+import StyledError from 'components/molecules/error/Error';
 
 export const QueriesContext = React.createContext({
   queries: {}
@@ -13,10 +14,81 @@ export const QueriesContext = React.createContext({
  * use(Query.search, 'apiResults');
  * you should understand:
  * "use query.search result as 'apiResults'"
- * @param {*} query 
- * @param {*} as 
+ * @param {object} query 
+ * @param {object} as 
  */
 export const use = (query, as) => ({ query, as });
+
+/**
+ * HOC that hydrates the given component with the query
+ * @param {object} props 
+ */
+const Hydrater = ({ component, as, query }) => {
+  /** The context we use to store the queries */
+  const context = useContext(QueriesContext);
+
+  /** Used to identify each request */
+  const [identifier] = useState(component.displayName + '.' + as);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const Child = component;
+  const Error = useCallback(() => {
+    return  <StyledError>{query.queryError || error.message}</StyledError>;
+  }, [query, error]);
+
+  /**
+   * Accumulates all the props into a single object.
+   * If 2 properties have the same, the first will be overrided.
+   */
+  const mergedProps = useCallback(() => {
+    return Object.keys(context.queries)
+      .reduce((acc, identifier) => {
+        const { [identifier]: queryContainer } = context.queries;
+        return { ...acc, ...queryContainer.props};
+      }, {});
+  }, [context]);
+
+  /**
+   * Updates the data and writes into the right query container props
+   * @param {object} data The result of the request
+   */
+  const onResult = useCallback(data => {
+    const { [identifier]: queryContainer } = context.queries;
+
+    context.queries[identifier] = {
+      ...queryContainer,
+      /**
+       * Creates a props object containing the result of the request
+       * with the name provided in 'as'
+       */
+      props: { [as]: data },
+      identifier
+    };
+
+    setData(data);
+  }, [identifier, context, as]);
+
+  useEffect(() => {
+    // adds current query to the context
+    context.queries = {
+      ...context.queries,
+      [identifier]: { component, as , query }
+    };
+    // executes the query
+    doQuery(query).then(
+      onResult,
+      error => setError(error)
+    );
+  }, [identifier, component, as, query, context, onResult]);
+
+  return (
+    <>
+      {data && <Child {...mergedProps()} />}
+      {error && <Error />}
+    </>
+  );
+};
 
 /**
  * Hydrates a component with the result of the given query
@@ -24,75 +96,13 @@ export const use = (query, as) => ({ query, as });
  * @param {object} param1 
  */
 export const hydrate = (component, { as, query }) => {
-  return class extends React.Component {
-    /** Used to identify each request */
-    static identifier = component.displayName + '.' + as;
-    /** The component name is forwarded to each created subcomponent */
-    static displayName = component.displayName;
-    /** The context we use to store the queries */
-    static contextType = QueriesContext;
+  const config = { component, as, query };
 
-    state = {
-      data: null,
-      identifier: this.constructor.identifier,
-      displayName: component.displayName
-    };
+  const Component = props => <Hydrater {...config} {...props} />;
+  /** The component name is forwarded to each created subcomponent */
+  Component.displayName = component.displayName;
 
-    componentDidMount() {
-      const { identifier } = this.state;
-      this.context.queries = {
-        ...this.context.queries,
-        [identifier]: { component, as , query }
-      }
-    }
-
-    /**
-     * Creates a props object containing the result of the request
-     * with the name provided in 'as'
-     */
-    buildProps = data => ({ [as]: data });
-
-    /**
-     * Updates the data and writes into the right query container props
-     * @param {object} data The result of the request
-     */
-    onResult = data => {
-      const { identifier } = this.state;
-      const { [identifier]: queryContainer } = this.context.queries;
-
-      this.context.queries[identifier] = {
-        ...queryContainer,
-        props: this.buildProps(data),
-        identifier
-      };
-
-      this.setState({ data });
-    };
-
-    /**
-     * Accumulates all the props into a single object.
-     * If 2 properties have the same, the first will be overrided.
-     */
-    mergedProps = () => {
-      return Object.keys(this.context.queries)
-        .reduce((acc, identifier) => {
-          const { [identifier]: queryContainer } = this.context.queries;
-          return { ...acc, ...queryContainer.props};
-        }, {});
-    }
-
-    render() {
-      const { data } = this.state;
-      const Child = component;
-
-      return (
-        <>
-          <Query {...query} method='get' onResult={this.onResult} />
-          {data && <Child {...this.mergedProps()} />}
-        </>
-      );
-    }
-  };
+  return Component;
 };
 
 /**
@@ -102,17 +112,15 @@ export const hydrate = (component, { as, query }) => {
  * @param  {...any} composedQueries 
  */
 export const compose = (...composedQueries) => {
-  return component => class extends React.Component {
-    render() {
-      const ResultedComponent = (composedQueries || [])
-      .reverse()
-      .filter(cq => cq != null)
-      .reduce((Acc, composedQuery) => {
-        return !Acc
-          ? hydrate(component, composedQuery)
-          : hydrate(Acc, composedQuery);
-      }, null);
-      return (<ResultedComponent />)
-    }
+  return component => () => {
+    const ResultedComponent = (composedQueries || [])
+    .reverse()
+    .filter(cq => cq != null)
+    .reduce((Acc, composedQuery) => {
+      return !Acc
+        ? hydrate(component, composedQuery)
+        : hydrate(Acc, composedQuery);
+    }, null);
+    return <ResultedComponent />;
   };
 };
